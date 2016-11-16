@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2734F7B81DDBA2B600AA64DB /* HouseLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2734F7B71DDBA2B600AA64DB /* HouseLegController.swift */; };
+		2734F7BA1DDBA31C00AA64DB /* SenateLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2734F7B91DDBA31C00AA64DB /* SenateLegController.swift */; };
+		2734F7BC1DDBA35200AA64DB /* StateLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2734F7BB1DDBA35200AA64DB /* StateLegController.swift */; };
+		274164881DDB90CE00E41F13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274164871DDB90CE00E41F13 /* AppDelegate.swift */; };
+		2741648A1DDB90CE00E41F13 /* LegislatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274164891DDB90CE00E41F13 /* LegislatorController.swift */; };
+		2741648D1DDB90CE00E41F13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2741648B1DDB90CE00E41F13 /* Main.storyboard */; };
+		2741648F1DDB90CE00E41F13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2741648E1DDB90CE00E41F13 /* Assets.xcassets */; };
+		274164921DDB90CE00E41F13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274164901DDB90CE00E41F13 /* LaunchScreen.storyboard */; };
+		27A5161C1DDBBBA000BA55A9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A5161B1DDBBBA000BA55A9 /* Alamofire.framework */; };
+		27A5161E1DDBBBA300BA55A9 /* SwiftSpinner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A5161D1DDBBBA300BA55A9 /* SwiftSpinner.framework */; };
+		27A516201DDBBBA800BA55A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A5161F1DDBBBA800BA55A9 /* SwiftyJSON.framework */; };
+		27A516221DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A516211DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework */; };
+		E120AD16FD1CE72F5290FEAA /* Pods_CongressSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BDAE5FE0D2C76A4F64E546 /* Pods_CongressSearchApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B9E948298D462E3532332FD /* Pods-CongressSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CongressSearchApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CongressSearchApp/Pods-CongressSearchApp.release.xcconfig"; sourceTree = "<group>"; };
+		2734F7B71DDBA2B600AA64DB /* HouseLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseLegController.swift; sourceTree = "<group>"; };
+		2734F7B91DDBA31C00AA64DB /* SenateLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenateLegController.swift; sourceTree = "<group>"; };
+		2734F7BB1DDBA35200AA64DB /* StateLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateLegController.swift; path = ../StateLegController.swift; sourceTree = "<group>"; };
+		274164841DDB90CE00E41F13 /* CongressSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CongressSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		274164871DDB90CE00E41F13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		274164891DDB90CE00E41F13 /* LegislatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegislatorController.swift; sourceTree = "<group>"; };
+		2741648C1DDB90CE00E41F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2741648E1DDB90CE00E41F13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		274164911DDB90CE00E41F13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		274164931DDB90CE00E41F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27A5161B1DDBBBA000BA55A9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		27A5161D1DDBBBA300BA55A9 /* SwiftSpinner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSpinner.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/SwiftSpinner/SwiftSpinner.framework"; sourceTree = "<group>"; };
+		27A5161F1DDBBBA800BA55A9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		27A516211DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/SlideMenuControllerSwift/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
+		48BDAE5FE0D2C76A4F64E546 /* Pods_CongressSearchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CongressSearchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50FFD4BAB2334FEB19C725D9 /* Pods-CongressSearchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CongressSearchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CongressSearchApp/Pods-CongressSearchApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		274164811DDB90CE00E41F13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27A516221DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework in Frameworks */,
+				27A516201DDBBBA800BA55A9 /* SwiftyJSON.framework in Frameworks */,
+				27A5161E1DDBBBA300BA55A9 /* SwiftSpinner.framework in Frameworks */,
+				27A5161C1DDBBBA000BA55A9 /* Alamofire.framework in Frameworks */,
+				E120AD16FD1CE72F5290FEAA /* Pods_CongressSearchApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2741647B1DDB90CE00E41F13 = {
+			isa = PBXGroup;
+			children = (
+				274164861DDB90CE00E41F13 /* CongressSearchApp */,
+				274164851DDB90CE00E41F13 /* Products */,
+				57793CE3DD5B833F0D4D4424 /* Pods */,
+				63D8AC39FF7076DDB9214D3E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		274164851DDB90CE00E41F13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				274164841DDB90CE00E41F13 /* CongressSearchApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		274164861DDB90CE00E41F13 /* CongressSearchApp */ = {
+			isa = PBXGroup;
+			children = (
+				2734F7BB1DDBA35200AA64DB /* StateLegController.swift */,
+				274164871DDB90CE00E41F13 /* AppDelegate.swift */,
+				274164891DDB90CE00E41F13 /* LegislatorController.swift */,
+				2741648B1DDB90CE00E41F13 /* Main.storyboard */,
+				2741648E1DDB90CE00E41F13 /* Assets.xcassets */,
+				274164901DDB90CE00E41F13 /* LaunchScreen.storyboard */,
+				274164931DDB90CE00E41F13 /* Info.plist */,
+				2734F7B71DDBA2B600AA64DB /* HouseLegController.swift */,
+				2734F7B91DDBA31C00AA64DB /* SenateLegController.swift */,
+			);
+			path = CongressSearchApp;
+			sourceTree = "<group>";
+		};
+		57793CE3DD5B833F0D4D4424 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50FFD4BAB2334FEB19C725D9 /* Pods-CongressSearchApp.debug.xcconfig */,
+				1B9E948298D462E3532332FD /* Pods-CongressSearchApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		63D8AC39FF7076DDB9214D3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27A516211DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework */,
+				27A5161F1DDBBBA800BA55A9 /* SwiftyJSON.framework */,
+				27A5161D1DDBBBA300BA55A9 /* SwiftSpinner.framework */,
+				27A5161B1DDBBBA000BA55A9 /* Alamofire.framework */,
+				48BDAE5FE0D2C76A4F64E546 /* Pods_CongressSearchApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		274164831DDB90CE00E41F13 /* CongressSearchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 274164961DDB90CE00E41F13 /* Build configuration list for PBXNativeTarget "CongressSearchApp" */;
+			buildPhases = (
+				4A0D4DD712E8C406755387C1 /* [CP] Check Pods Manifest.lock */,
+				274164801DDB90CE00E41F13 /* Sources */,
+				274164811DDB90CE00E41F13 /* Frameworks */,
+				274164821DDB90CE00E41F13 /* Resources */,
+				5A9832481FCEFDC2F88BE393 /* [CP] Embed Pods Frameworks */,
+				18011D493AC2EAD0964BDCD8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CongressSearchApp;
+			productName = CongressSearchApp;
+			productReference = 274164841DDB90CE00E41F13 /* CongressSearchApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2741647C1DDB90CE00E41F13 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Veerav Naidu";
+				TargetAttributes = {
+					274164831DDB90CE00E41F13 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = SGZQ7ZGCZ9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2741647F1DDB90CE00E41F13 /* Build configuration list for PBXProject "CongressSearchApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2741647B1DDB90CE00E41F13;
+			productRefGroup = 274164851DDB90CE00E41F13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				274164831DDB90CE00E41F13 /* CongressSearchApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		274164821DDB90CE00E41F13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274164921DDB90CE00E41F13 /* LaunchScreen.storyboard in Resources */,
+				2741648F1DDB90CE00E41F13 /* Assets.xcassets in Resources */,
+				2741648D1DDB90CE00E41F13 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18011D493AC2EAD0964BDCD8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CongressSearchApp/Pods-CongressSearchApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A0D4DD712E8C406755387C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5A9832481FCEFDC2F88BE393 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CongressSearchApp/Pods-CongressSearchApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		274164801DDB90CE00E41F13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2734F7BA1DDBA31C00AA64DB /* SenateLegController.swift in Sources */,
+				2741648A1DDB90CE00E41F13 /* LegislatorController.swift in Sources */,
+				2734F7BC1DDBA35200AA64DB /* StateLegController.swift in Sources */,
+				2734F7B81DDBA2B600AA64DB /* HouseLegController.swift in Sources */,
+				274164881DDB90CE00E41F13 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2741648B1DDB90CE00E41F13 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2741648C1DDB90CE00E41F13 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		274164901DDB90CE00E41F13 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				274164911DDB90CE00E41F13 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		274164941DDB90CE00E41F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		274164951DDB90CE00E41F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		274164971DDB90CE00E41F13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50FFD4BAB2334FEB19C725D9 /* Pods-CongressSearchApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SGZQ7ZGCZ9;
+				INFOPLIST_FILE = CongressSearchApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = personal.CongressSearchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		274164981DDB90CE00E41F13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B9E948298D462E3532332FD /* Pods-CongressSearchApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SGZQ7ZGCZ9;
+				INFOPLIST_FILE = CongressSearchApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = personal.CongressSearchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2741647F1DDB90CE00E41F13 /* Build configuration list for PBXProject "CongressSearchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				274164941DDB90CE00E41F13 /* Debug */,
+				274164951DDB90CE00E41F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		274164961DDB90CE00E41F13 /* Build configuration list for PBXNativeTarget "CongressSearchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				274164971DDB90CE00E41F13 /* Debug */,
+				274164981DDB90CE00E41F13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2741647C1DDB90CE00E41F13 /* Project object */;
+}
