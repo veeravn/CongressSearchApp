@@ -9,35 +9,58 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
-class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+
     
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
+    var letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+    var indexOfLetters = [String]()
+    let searchBar = UISearchBar().self
+    //search function variables
+    var filteredLegs = [[String:AnyObject]]()
+    var shouldShowSearch = false
+    
+    func createSearchBar() {
+        
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search Legislators"
+        searchBar.delegate = self
+        
+        
+        self.navigationItem.titleView = searchBar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators";
-        // Do any additional setup after loading the view, typically from a nib.
+        createSearchBar()
+        indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
         
-        Alamofire.request(url).responseJSON { (responseData) -> Void in
-            if((responseData.result.value) != nil) {
-                let swiftyJsonVar = JSON(responseData.result.value!)
-                
+        let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
+
+        
+        Alamofire.request(url).responseJSON { (responseJSON) -> Void in
+            if((responseJSON.result.value) != nil) {
+                let swiftyJsonVar = JSON(responseJSON.result.value!)
                 if let resData = swiftyJsonVar["results"].arrayObject {
                     self.arrRes = resData as! [[String:AnyObject]]
+                    self.arrRes = self.arrRes.sorted { ($0["first_name"] as? String)! < ($1["first_name"] as? String)! }
                 }
                 if self.arrRes.count > 0 {
+                    self.numOfRows = self.arrRes.count
                     self.tblJSON.reloadData()
                 }
-                self.numOfRows = self.arrRes.count
-                print("test: ", self.numOfRows);
             }
         }
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numOfRows;
+        if(shouldShowSearch) {
+            return filteredLegs.count
+        } else {
+            return self.numOfRows
+        }
     }
     
     
@@ -45,15 +68,24 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        var cur = self.arrRes[indexPath.row]
-        cell.textLabel?.text = cur["last_name"] as? String
-        print(cur["last_name"])
+        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        var cur : [String:AnyObject]
+        if(shouldShowSearch) {
+            cur = self.filteredLegs[indexPath.row]
+        } else {
+            cur = self.arrRes[indexPath.row]
+        }
+    
+        let first = cur["first_name"] as? String
+        let last = cur["last_name"] as? String
+        cell.textLabel?.text = first! + " " + last!
+        cell.detailTextLabel?.text = cur["state_name"] as? String
+        
         return cell
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 26;
+        return 1;
     }// Default is 1 if not implemented
     
     
@@ -67,7 +99,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     // Index
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return []
+        return indexOfLetters
     }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -83,5 +115,43 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearch = true
+        searchBar.endEditing(true)
+        self.tblJSON.reloadData()
+    }
+    
+    //Search functions
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText != "" {
+            shouldShowSearch = true
+            print(searchText)
+//            print(self.arrRes[100]["first_name"]!)
+            
+            filteredLegs = self.arrRes.filter({(obj) -> Bool in
+                //                print(obj)
+                let f = obj["first_name"] as? String
+                return f!.range(of: searchText) != nil
+            })
+           
+        } else {
+            shouldShowSearch = false
+        }
+        self.tblJSON.reloadData()
+    }
+    public func updateSearchResults(for searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+        
+        filteredLegs = self.arrRes.filter({(obj) -> Bool in
+            //                print(obj)
+            let f = obj["first_name"] as? String
+            return f!.range(of: searchString!) != nil
+        })
+        self.tblJSON.reloadData()
+    }
+    //end search functions
 }
 
