@@ -4,7 +4,7 @@
 //
 //  Created by Veerav Naidu on 11/15/16.
 //  Copyright © 2016 Veerav Naidu. All rights reserved.
-//
+///Users/veerav/Desktop/workspace/CongressSearchApp/CongressSearchApp/StateLegController.swift
 
 import UIKit
 import SwiftyJSON
@@ -53,6 +53,7 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+        
     }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if(shouldShowSearch) {
@@ -148,7 +149,8 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
             shouldShowSearch = true
             filteredLegs = self.arrRes.filter({(obj) -> Bool in
                 let f = obj["first_name"] as? String
-                return f!.range(of: searchText) != nil
+                let l = obj["last_name"] as? String
+                return f!.range(of: searchText) != nil || l!.range(of: searchText) != nil
             })
             
         } else {
@@ -162,7 +164,8 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         filteredLegs = self.arrRes.filter({(obj) -> Bool in
             //                print(obj)
             let f = obj["first_name"] as? String
-            return f!.range(of: searchString!) != nil
+            let l = obj["last_name"] as? String
+            return f!.range(of: searchString!) != nil || l!.range(of: searchString!) != nil
         })
         self.tblJSON.reloadData()
     }
