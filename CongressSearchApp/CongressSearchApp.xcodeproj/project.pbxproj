@@ -20,6 +20,9 @@
 		27A516201DDBBBA800BA55A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A5161F1DDBBBA800BA55A9 /* SwiftyJSON.framework */; };
 		27A516221DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A516211DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework */; };
 		27A516241DDD8BE200BA55A9 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516231DDD8BE200BA55A9 /* NavController.swift */; };
+		27A516261DDE6C3000BA55A9 /* LegislatorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */; };
+		27A516281DDEA09300BA55A9 /* LegDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516271DDEA09300BA55A9 /* LegDetailCell.swift */; };
+		27A5162C1DDED30700BA55A9 /* LegCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5162B1DDED30700BA55A9 /* LegCell.swift */; };
 		E120AD16FD1CE72F5290FEAA /* Pods_CongressSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BDAE5FE0D2C76A4F64E546 /* Pods_CongressSearchApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,9 @@
 		27A5161F1DDBBBA800BA55A9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		27A516211DDBBBAC00BA55A9 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CongressSearchApp-dpskohrtwacyojfxvuvndmssgjtg/Build/Products/Debug-iphonesimulator/SlideMenuControllerSwift/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
 		27A516231DDD8BE200BA55A9 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegislatorDetailViewController.swift; sourceTree = "<group>"; };
+		27A516271DDEA09300BA55A9 /* LegDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetailCell.swift; sourceTree = "<group>"; };
+		27A5162B1DDED30700BA55A9 /* LegCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegCell.swift; sourceTree = "<group>"; };
 		48BDAE5FE0D2C76A4F64E546 /* Pods_CongressSearchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CongressSearchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FFD4BAB2334FEB19C725D9 /* Pods-CongressSearchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CongressSearchApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CongressSearchApp/Pods-CongressSearchApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +91,9 @@
 				274164871DDB90CE00E41F13 /* AppDelegate.swift */,
 				274164891DDB90CE00E41F13 /* LegislatorController.swift */,
 				2741648B1DDB90CE00E41F13 /* Main.storyboard */,
+				27A516271DDEA09300BA55A9 /* LegDetailCell.swift */,
+				27A5162B1DDED30700BA55A9 /* LegCell.swift */,
+				27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */,
 				27A516231DDD8BE200BA55A9 /* NavController.swift */,
 				2741648E1DDB90CE00E41F13 /* Assets.xcassets */,
 				274164901DDB90CE00E41F13 /* LaunchScreen.storyboard */,
@@ -241,10 +250,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2734F7BA1DDBA31C00AA64DB /* SenateLegController.swift in Sources */,
+				27A516281DDEA09300BA55A9 /* LegDetailCell.swift in Sources */,
 				2741648A1DDB90CE00E41F13 /* LegislatorController.swift in Sources */,
+				27A5162C1DDED30700BA55A9 /* LegCell.swift in Sources */,
 				2734F7BC1DDBA35200AA64DB /* StateLegController.swift in Sources */,
 				2734F7B81DDBA2B600AA64DB /* HouseLegController.swift in Sources */,
 				274164881DDB90CE00E41F13 /* AppDelegate.swift in Sources */,
+				27A516261DDE6C3000BA55A9 /* LegislatorDetailViewController.swift in Sources */,
 				27A516241DDD8BE200BA55A9 /* NavController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

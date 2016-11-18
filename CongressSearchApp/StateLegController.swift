@@ -45,7 +45,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
                 if let resData = swiftyJsonVar["results"].arrayObject {
                     self.arrRes = resData as! [[String:AnyObject]]
-                    self.arrRes = self.arrRes.sorted { ($0["first_name"] as? String)! < ($1["first_name"] as? String)! }
+                    self.arrRes = self.arrRes.sorted { ($0["last_name"] as? String)! < ($1["last_name"] as? String)! }
                 }
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
@@ -68,7 +68,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LegCell
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
             cur = self.filteredLegs[indexPath.row]
@@ -78,15 +78,27 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     
         let first = cur["first_name"] as? String
         let last = cur["last_name"] as? String
-        cell.textLabel?.text = first! + " " + last!
-        cell.detailTextLabel?.text = cur["state_name"] as? String
+        cell?.legname?.text = first! + " " + last!
+        cell?.legstate?.text = cur["state_name"] as? String
         
-        return cell
+        let id = cur["bioguide_id"] as? String
+        let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+        let i = URL(string: imageurl)
+        let data = try? Data(contentsOf: i!)
+        cell?.legimage.image = UIImage(data: data!)
+        
+
+        return cell!
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
-    }// Default is 1 if not implemented
+//        if(shouldShowSearch) {
+//            return 1
+//        } else {
+//            return numOfRows;
+//        }
+        return 1
+    }
     
     
     // Editing
@@ -115,7 +127,28 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "legislatorDetail", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "legislatorDetail" {
+            let legDetail = segue.destination as! UINavigationController
+            let legDetailVC = legDetail.topViewController as! LegislatorDetailViewController
+            if let cell = self.tblJSON.indexPathForSelectedRow {
+                legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
+                if self.tabBarItem.title == "State" {
+                    legDetailVC.returnId = "State"
+                }
+                //legDetailVC.returnId
+            }
 
+            
+        }
+    }
+    func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
+        //let leg = self.arrRes[indexPath.section]
+        return self.arrRes[indexPath.row]
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearch = true
         searchBar.endEditing(true)
@@ -151,6 +184,9 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
             return f!.range(of: searchString!) != nil
         })
         self.tblJSON.reloadData()
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
     }
     //end search functions
 }
