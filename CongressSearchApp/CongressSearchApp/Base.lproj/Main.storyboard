@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3gL-rh-Ve7" id="0jM-dD-HVG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEO-7b-QOK">
@@ -57,6 +57,7 @@
                                             <outlet property="legimage" destination="NEO-7b-QOK" id="Vhu-qY-hMR"/>
                                             <outlet property="legname" destination="FiK-zj-auZ" id="v9k-QT-fBP"/>
                                             <outlet property="legstate" destination="kzd-dk-sbD" id="M0P-mt-1Aj"/>
+                                            <segue destination="uY1-Wn-Pff" kind="show" identifier="legislatorDetail" id="Mc1-Ln-hMh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -79,12 +80,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tblJSON" destination="fK4-8b-wqR" id="xMP-p7-1hU"/>
-                        <segue destination="zuK-hV-tSm" kind="show" identifier="legislatorDetail" id="2gQ-dA-q7A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6h-tD-00c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-121" y="1304"/>
+            <point key="canvasLocation" x="452" y="1304"/>
         </scene>
         <!--State-->
         <scene sceneID="CnW-kc-E4F">
@@ -106,7 +106,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z1S-Cw-BuI" id="uIZ-6B-XsZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Skt-zM-r4G">
@@ -139,6 +139,7 @@
                                             <outlet property="legimage" destination="Skt-zM-r4G" id="NZa-5v-pzf"/>
                                             <outlet property="legname" destination="Uuj-0Y-Qak" id="YTr-sR-O7a"/>
                                             <outlet property="legstate" destination="oeq-7U-Lea" id="8Ls-s8-gPo"/>
+                                            <segue destination="uY1-Wn-Pff" kind="show" identifier="legislatorDetail" id="xyI-Bs-4sg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -183,12 +184,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tblJSON" destination="Ygf-qj-he5" id="IrD-SH-Flt"/>
-                        <segue destination="zuK-hV-tSm" kind="show" identifier="legislatorDetail" action="showDetailViewController:sender:" id="iHf-3J-eAj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPK-6p-tUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="-243"/>
+            <point key="canvasLocation" x="854" y="-199"/>
         </scene>
         <!--LegislatorDetail-->
         <scene sceneID="lR8-O5-rLb">
@@ -218,7 +218,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qa1-Hv-4yH" id="8u8-hq-yYs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzw-T8-nW8">
@@ -257,17 +257,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Legislator Details" id="t7S-fS-Fa4">
                         <barButtonItem key="backBarButtonItem" title="Back" id="cbT-P5-1Oj"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="tI1-My-7Ub"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="tI1-My-7Ub" id="ur8-LX-VY3"/>
                         <outlet property="detailTable" destination="onH-5n-qve" id="aAU-um-3zk"/>
                         <outlet property="legImage" destination="f5X-Oy-tb9" id="eOD-FF-C3k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GJ-3u-EKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="1304"/>
+            <point key="canvasLocation" x="1543" y="542"/>
         </scene>
         <!--Senate-->
         <scene sceneID="1Vj-Ck-JtR">
@@ -290,7 +288,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="621-fO-2Rc" id="7WQ-7h-Rqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6jg-CF-Q0F">
@@ -324,6 +322,7 @@
                                             <outlet property="legimage" destination="6jg-CF-Q0F" id="v94-kX-6jO"/>
                                             <outlet property="legname" destination="ccy-z1-1zj" id="ZjA-Cw-BPx"/>
                                             <outlet property="legstate" destination="5gY-MT-IaV" id="VGM-UF-xAb"/>
+                                            <segue destination="uY1-Wn-Pff" kind="show" identifier="legislatorDetail" id="uGU-14-j7T"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -346,7 +345,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tblJSON" destination="kAe-TW-d3G" id="3Id-if-pxH"/>
-                        <segue destination="zuK-hV-tSm" kind="show" identifier="legislatorDetail" id="afb-As-zg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDj-HZ-NQt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -371,7 +369,170 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3tp-sG-wsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1058" y="-242"/>
+            <point key="canvasLocation" x="-1058" y="-199"/>
+        </scene>
+        <!--BillController-->
+        <scene sceneID="ec2-R1-g6P">
+            <objects>
+                <tabBarController title="BillController" id="l74-e7-Tfe" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="zVi-Tj-4I4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0p7-Ws-GCv" kind="relationship" relationship="viewControllers" id="I8Y-ip-5MC"/>
+                        <segue destination="c2K-d9-DKg" kind="relationship" relationship="viewControllers" id="rbg-7F-cf3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S3N-wj-acu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1108" y="-1192"/>
+        </scene>
+        <!--New Bill Controller-->
+        <scene sceneID="0Gj-eg-ZoF">
+            <objects>
+                <tableViewController id="Bgi-W2-902" customClass="NewBillController" customModule="CongressSearchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Clw-Zm-Pjl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="billCell" id="Rzl-tv-SZd" customClass="BillDetailCell" customModule="CongressSearchApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rzl-tv-SZd" id="JlP-BX-xMX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="StB-NF-7hr" kind="show" identifier="billDetail" id="kZ4-xx-8vJ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bgi-W2-902" id="fpr-jp-ZKF"/>
+                            <outlet property="delegate" destination="Bgi-W2-902" id="oqA-kh-ITz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="j37-3w-avn"/>
+                    <connections>
+                        <outlet property="tblJSON" destination="Clw-Zm-Pjl" id="vxE-5K-wwk"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeu-3Z-rCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="-1004"/>
+        </scene>
+        <!--Active Bill Controller-->
+        <scene sceneID="g7n-ua-ig6">
+            <objects>
+                <tableViewController id="C9d-dB-P9p" customClass="ActiveBillController" customModule="CongressSearchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SqP-Dk-IOF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="billCell" id="Yzn-9h-E1R" customClass="BillDetailCell" customModule="CongressSearchApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yzn-9h-E1R" id="Gtb-Eg-Cpb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="StB-NF-7hr" kind="show" identifier="billDetail" id="pr1-A8-AIL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="C9d-dB-P9p" id="emD-TS-xJx"/>
+                            <outlet property="delegate" destination="C9d-dB-P9p" id="d4I-gQ-Ro4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OVU-oe-9hY"/>
+                    <connections>
+                        <outlet property="tblJSON" destination="SqP-Dk-IOF" id="sNY-bK-NKQ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8p-nP-sXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927.20000000000005" y="-1764.4677661169417"/>
+        </scene>
+        <!--Bill Details-->
+        <scene sceneID="Tep-dk-dNt">
+            <objects>
+                <viewController title="Bill Details" id="StB-NF-7hr" customClass="BillDetailController" customModule="CongressSearchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9CR-ue-nhm"/>
+                        <viewControllerLayoutGuide type="bottom" id="9cJ-ec-A1S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fd1-4U-jE8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Ks-2f-BuR">
+                                <rect key="frame" x="0.0" y="221" width="375" height="446"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="detailCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" id="asw-AG-zuD" customClass="BillDetailCell" customModule="CongressSearchApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="asw-AG-zuD" id="eKf-eP-XfN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ3-e0-Xfe">
+                                                    <rect key="frame" x="15" y="8" width="155" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toC-Yo-S1R">
+                                                    <rect key="frame" x="170" y="8" width="205" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detail" destination="toC-Yo-S1R" id="Bsx-c6-auu"/>
+                                            <outlet property="title" destination="pJ3-e0-Xfe" id="Dv1-l7-qNJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="StB-NF-7hr" id="PZe-TX-FUq"/>
+                                    <outlet property="delegate" destination="StB-NF-7hr" id="9mL-aC-Amo"/>
+                                </connections>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkd-Sr-mbX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="pzO-8a-Qv9"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Bill Details" id="083-f2-5b0"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="billTitle" destination="Vkd-Sr-mbX" id="RDO-no-gyu"/>
+                        <outlet property="detailTable" destination="7Ks-2f-BuR" id="Xl2-8N-iYS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yx3-BG-tCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2266" y="-1603"/>
         </scene>
         <!--State-->
         <scene sceneID="aLa-nh-9OP">
@@ -392,7 +553,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izr-3F-iF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104.8" y="-241.52923538230885"/>
+            <point key="canvasLocation" x="89" y="-199"/>
         </scene>
         <!--Senate-->
         <scene sceneID="nVJ-YZ-KLF">
@@ -436,26 +597,51 @@
             </objects>
             <point key="canvasLocation" x="-1058" y="1304"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fiv-dH-HDW">
+        <!--Active-->
+        <scene sceneID="46X-PT-NKa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zuK-hV-tSm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0p7-Ws-GCv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Active" id="SfW-gp-ooG">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XX5-ve-Rbc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mf9-Bn-yTL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uY1-Wn-Pff" kind="relationship" relationship="rootViewController" id="fg2-fW-KRm"/>
+                        <segue destination="C9d-dB-P9p" kind="relationship" relationship="rootViewController" id="7Ah-Xp-s1v"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nuV-ZJ-5oM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTL-SN-fG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="1304"/>
+            <point key="canvasLocation" x="-12" y="-1764.4677661169417"/>
+        </scene>
+        <!--New-->
+        <scene sceneID="IBM-in-v8H">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2K-d9-DKg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New" id="vBi-UO-ivU">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="md9-Wh-oIq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bgi-W2-902" kind="relationship" relationship="rootViewController" id="WBr-o7-q9Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3I-Ob-ulp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-32.799999999999997" y="-1004.3478260869566"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="afb-As-zg3"/>
+        <segue reference="Mc1-Ln-hMh"/>
+        <segue reference="kZ4-xx-8vJ"/>
     </inferredMetricsTieBreakers>
 </document>

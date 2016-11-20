@@ -95,7 +95,10 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         return 1
     }// Default is 1 if not implemented
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     // Editing
     
     // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
@@ -113,14 +116,9 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         return 0;
     }// tell table which section corresponds to section title/index (e.g. "B",1))
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "legislatorDetail", sender: self)
-    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "legislatorDetail" {
-            let legDetail = segue.destination as! UINavigationController
-            let legDetailVC = legDetail.topViewController as! LegislatorDetailViewController
+            let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
                 if self.tabBarItem.title == "State" {
@@ -131,6 +129,7 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
             
             
         }
+        self.tabBarController?.tabBar.isHidden = true
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
         //let leg = self.arrRes[indexPath.section]

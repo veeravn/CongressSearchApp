@@ -63,7 +63,10 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
@@ -126,14 +129,10 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "legislatorDetail", sender: self)
-    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "legislatorDetail" {
-            let legDetail = segue.destination as! UINavigationController
-            let legDetailVC = legDetail.topViewController as! LegislatorDetailViewController
+            let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
                 if self.tabBarItem.title == "State" {
@@ -141,8 +140,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 //legDetailVC.returnId
             }
-
-            
+            self.tabBarController?.tabBar.isHidden = true
         }
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
