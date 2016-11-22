@@ -9,33 +9,23 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
-class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
+    @IBOutlet var statepicker: UIPickerView!
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
     var letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
     var indexOfLetters = [String]()
-    let searchBar = UISearchBar().self
     //search function variables
     var filteredLegs = [[String:AnyObject]]()
     var shouldShowSearch = false
-    
-    func createSearchBar() {
-        
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search Legislators"
-        searchBar.delegate = self
-        
-        
-        self.navigationItem.titleView = searchBar
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        createSearchBar()
-        indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
+//        self.statepicker.isHidden = true
+//        indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
         
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
 
@@ -49,17 +39,42 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
+                    self.generateLegsDict()
                     self.tblJSON.reloadData()
                 }
             }
         }
     }
     
+    //Legislator indexing
+    //array to hold the indexes of letters
+    var legSection = [String]()
+    //array to hold the first letter of the last names as the key and the array of legislator objects as the value
+    var legDict = [String:[[String:AnyObject]]]()
+    func generateLegsDict() {
+        for leg in self.arrRes  {
+            let lname = leg["last_name"] as? String
+            let key = "\(lname![(lname!.startIndex)])"
+            
+            if var legValues = legDict[key] {
+                legValues.append(leg as [String:AnyObject])
+                legDict[key] = legValues
+            } else {
+                legDict[key] = [leg as [String:AnyObject]]
+            }
+        }
+        legSection = [String](legDict.keys).sorted()
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
             return filteredLegs.count
         } else {
-            return self.numOfRows
+            let legKey = legSection[section]
+            if let legValues = legDict[legKey] {
+                return legValues.count
+            }
+            return 0
         }
     }
     
@@ -76,21 +91,24 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         if(shouldShowSearch) {
             cur = self.filteredLegs[indexPath.row]
         } else {
-            cur = self.arrRes[indexPath.row]
+            let legKey = legSection[indexPath.section]
+            if legDict[legKey] != nil {
+                let curSec = legDict[legKey]
+                cur = (curSec?[indexPath.row])!
+                let first = cur["first_name"] as? String
+                let last = cur["last_name"] as? String
+                cell?.legname?.text = first! + " " + last!
+                cell?.legstate?.text = cur["state_name"] as? String
+                
+                let id = cur["bioguide_id"] as? String
+                let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+                let i = URL(string: imageurl)
+                let data = try? Data(contentsOf: i!)
+                cell?.legimage.image = UIImage(data: data!)
+            }
+            
         }
     
-        let first = cur["first_name"] as? String
-        let last = cur["last_name"] as? String
-        cell?.legname?.text = first! + " " + last!
-        cell?.legstate?.text = cur["state_name"] as? String
-        
-        let id = cur["bioguide_id"] as? String
-        let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
-        let i = URL(string: imageurl)
-        let data = try? Data(contentsOf: i!)
-        cell?.legimage.image = UIImage(data: data!)
-        
-
         return cell!
     }
     
@@ -100,21 +118,17 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
 //        } else {
 //            return numOfRows;
 //        }
-        return 1
+        return legSection.count
     }
     
-    
-    // Editing
-    
-    // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return legSection[section]
     }
     
     // Index
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return indexOfLetters
+        return legSection
     }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -135,59 +149,21 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
             let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
-                if self.tabBarItem.title == "State" {
-                    legDetailVC.returnId = "State"
-                }
-                //legDetailVC.returnId
+
             }
             self.tabBarController?.tabBar.isHidden = true
         }
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
-        //let leg = self.arrRes[indexPath.section]
-        return self.arrRes[indexPath.row]
+        let legKey = legSection[indexPath.section]
+        let legs = self.legDict[legKey]
+        return (legs?[indexPath.row])!
     }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        shouldShowSearch = true
-        searchBar.endEditing(true)
-        self.tblJSON.reloadData()
-    }
-    
-    //Search functions
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText != "" {
-            shouldShowSearch = true
-            print(searchText)
-//            print(self.arrRes[100]["first_name"]!)
-            
-            filteredLegs = self.arrRes.filter({(obj) -> Bool in
-                //                print(obj)
-                let f = obj["first_name"] as? String
-                let l = obj["last_name"] as? String
-                return f!.range(of: searchText) != nil || l!.range(of: searchText) != nil
-            })
-           
-        } else {
-            shouldShowSearch = false
-        }
-        self.tblJSON.reloadData()
-    }
-    public func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
-        
-        filteredLegs = self.arrRes.filter({(obj) -> Bool in
-            //                print(obj)
-            let f = obj["first_name"] as? String
-            let l = obj["last_name"] as? String
-            return f!.range(of: searchString!) != nil || l!.range(of: searchString!) != nil
-        })
-        self.tblJSON.reloadData()
-    }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.endEditing(true)
-    }
-    //end search functions
-}
 
+}
+extension UIPickerViewDelegate {
+    
+}
+extension UIPickerViewDataSource {
+    
+}

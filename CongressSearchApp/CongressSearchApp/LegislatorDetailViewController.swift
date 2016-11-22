@@ -42,8 +42,13 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         let birthDate = formatter.date(from: birth!)
         let term = self.leg["term_end"] as! String?
         let term_end = formatter.date(from: term!)
-        let twitter = self.leg["twitter_id"] as! String?
-        let twitterurl = URL(string: "https://www.twitter.com/" + twitter!)
+        var twitterurl : URL
+        if let twitter = self.leg["twitter_id"] as! String? {
+            twitterurl = URL(string: "https://www.twitter.com/" + twitter)!
+        } else {
+            twitterurl = URL(string: "N.A.")!
+        }
+        
         let weburl = URL(string: (self.leg["website"] as! String?)!)
         formatter.dateFormat = "dd MMM yyyy"
         switch keys[indexPath.row] {
@@ -81,11 +86,15 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
             break
         case "fax":
             cell.title.text = "Fax No."
-            cell.detail.text = self.leg[keys[indexPath.row]] as! String?
+            if let faxNo = self.leg[keys[indexPath.row]] as! String? {
+                cell.detail.text = faxNo
+            } else {
+                cell.detail.text = "N.A."
+            }
             break
         case "twitter_id":
             cell.title.text = "Twitter Link"
-            cell.detail.text = twitterurl?.absoluteString
+            cell.detail.text = twitterurl.absoluteString
             break
         case "website":
             cell.title.text = "Website Link"

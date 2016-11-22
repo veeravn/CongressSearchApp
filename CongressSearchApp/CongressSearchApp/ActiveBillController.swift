@@ -88,9 +88,6 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
             let billDetailVC = segue.destination as! BillDetailController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 billDetailVC.bill = billAt(indexPath: cell as NSIndexPath)
-                if self.tabBarItem.title == "Active" {
-                    billDetailVC.returnId = "Active"
-                }
             }
         }
         self.tabBarController?.tabBar.isHidden = true
