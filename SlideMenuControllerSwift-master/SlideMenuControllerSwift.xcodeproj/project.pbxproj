@@ -160,6 +160,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		27C0BC521DE5FB3F00A2CBCF /* Legislators */ = {
+			isa = PBXGroup;
+			children = (
+				27C0BC451DE5327200A2CBCF /* LegislatorController.swift */,
+				27C0BC3F1DE52D6800A2CBCF /* LegislatorDetailViewController.swift */,
+				27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */,
+				27C0BC411DE52D8000A2CBCF /* SenateLegController.swift */,
+				27C0BC421DE52D8000A2CBCF /* StateLegController.swift */,
+				27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */,
+				27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */,
+			);
+			name = Legislators;
+			sourceTree = "<group>";
+		};
+		27C0BC531DE5FB8600A2CBCF /* Bills */ = {
+			isa = PBXGroup;
+			children = (
+				27C0BC471DE5850600A2CBCF /* ActiveBillController.swift */,
+				27C0BC481DE5850600A2CBCF /* BillController.swift */,
+				27C0BC491DE5850600A2CBCF /* BillDetailCell.swift */,
+				27C0BC4A1DE5850600A2CBCF /* BillDetailController.swift */,
+				27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */,
+			);
+			name = Bills;
+			sourceTree = "<group>";
+		};
 		C03444607E329BE5258A4AB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,27 +296,17 @@
 		C5C1CE631A70F7C400B6E411 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				27C0BC471DE5850600A2CBCF /* ActiveBillController.swift */,
-				27C0BC481DE5850600A2CBCF /* BillController.swift */,
-				27C0BC491DE5850600A2CBCF /* BillDetailCell.swift */,
-				27C0BC4A1DE5850600A2CBCF /* BillDetailController.swift */,
-				27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */,
-				27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */,
+				27C0BC521DE5FB3F00A2CBCF /* Legislators */,
+				27C0BC531DE5FB8600A2CBCF /* Bills */,
 				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
-				27C0BC3F1DE52D6800A2CBCF /* LegislatorDetailViewController.swift */,
 				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
-				27C0BC451DE5327200A2CBCF /* LegislatorController.swift */,
 				C5BD39DD1A6CD17B00D0AF95 /* ComViewController.swift */,
 				C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */,
-				27C0BC411DE52D8000A2CBCF /* SenateLegController.swift */,
-				27C0BC421DE52D8000A2CBCF /* StateLegController.swift */,
 				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
 				C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */,
 				C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */,
-				27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */,
-				27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
