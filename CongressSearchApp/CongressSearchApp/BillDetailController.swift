@@ -14,13 +14,17 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
     let keys = ["bill_id", "bill_type", "sponsor", "last_action_at", "pdf", "chamber", "last_vote", "active"]
     @IBOutlet var billTitle: UITextView!
     @IBOutlet var detailTable: UITableView!
-    @IBOutlet var backButton: UIBarButtonItem!
-    var returnId : String = ""
-
+    
+    @IBOutlet var button: UIBarButtonItem!
+    var favBills : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         billTitle.text = bill["official_title"] as! String!
-        // Do any additional setup after loading the view.
+        
+        favBills = UserDefaults.standard.array(forKey: "favBills") as! [String]
+        updateStar()
+        //assign button to navigationbar
+        self.navigationItem.rightBarButtonItem = button
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,7 +121,35 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-
+    func saveBill(id:String) {
+        let favbills = UserDefaults.standard
+        if favBills.count == 0 {
+            button.image = UIImage(named: "Christmas Star Filled-50.png")
+            favBills.append(id)
+            favbills.set(favBills, forKey: "favBills")
+        } else if favBills.contains(id) {
+            button.image = UIImage(named: "Christmas Star-50.png")
+            
+            let index = favBills.index(of: id)
+            favBills.remove(at: index!)
+            favbills.set(favBills, forKey: "favBills")
+            
+        } else {
+            button.image = UIImage(named: "Christmas Star Filled-50.png")
+            favBills.append(id)
+            favbills.set(favBills, forKey: "favBills")
+        }
+    }
+    func updateStar() {
+        
+            if favBills.contains(bill["bill_id"] as! String) {
+                button.image = UIImage(named: "Christmas Star Filled-50.png")
+            }
+    }
+    @IBAction func saveFavBill(_ sender: Any) {
+        let id = self.bill["bill_id"] as? String!
+        saveBill(id: id!)
+    }
     /*
     // MARK: - Navigation
 

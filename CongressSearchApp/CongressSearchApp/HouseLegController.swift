@@ -11,6 +11,7 @@ import SwiftyJSON
 import Alamofire
 class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    @IBOutlet var filterButton: UIBarButtonItem!
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
@@ -32,13 +33,22 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     
+    @IBAction func filterLegs(_ sender: Any) {
+        if self.navigationItem.titleView != nil {
+            self.navigationItem.titleView = searchBar
+            filterButton.image = UIImage(named: "Cancel-22.png")
+        } else {
+            self.navigationItem.titleView = nil
+            self.navigationItem.title = "Legislators"
+            filterButton.image = UIImage(named: "Search-22.png")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
         createSearchBar()
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
-        
-        
+        self.searchBar.isHidden = true
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -54,6 +64,9 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,7 +94,7 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let first = cur["first_name"] as? String
             let last = cur["last_name"] as? String
-            cell?.legname?.text = first! + " " + last!
+            cell?.legname?.text = last! + ", " + first!
             cell?.legstate?.text = cur["state_name"] as? String
             
             let id = cur["bioguide_id"] as? String

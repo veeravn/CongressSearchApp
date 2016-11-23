@@ -31,13 +31,14 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     
+    @IBOutlet var filterButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
         createSearchBar()
+        searchBar.isHidden = true
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
-        
-        
+            
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -54,6 +55,18 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @IBAction func filterLegs(_ sender: Any) {
+        if searchBar.isHidden {
+            searchBar.isHidden = false
+            filterButton.image = UIImage(named: "Cancel-22.png")
+        } else {
+            searchBar.isHidden = true
+            //            self.navigationItem.title. = "Legislators"
+            self.navigationController?.navigationItem.title = "Legislators"
+            filterButton.image = UIImage(named: "Search-22.png")
+        }
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
             return filteredLegs.count
@@ -77,7 +90,7 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         
         let first = cur["first_name"] as? String
         let last = cur["last_name"] as? String
-        cell?.legname?.text = first! + " " + last!
+        cell?.legname?.text = last! + ", " + first!
         cell?.legstate?.text = cur["state_name"] as? String
         
         let id = cur["bioguide_id"] as? String
@@ -85,6 +98,7 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         let i = URL(string: imageurl)
         let data = try? Data(contentsOf: i!)
         cell?.legimage.image = UIImage(data: data!)
+        
         
         return cell!
 

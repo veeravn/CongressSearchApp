@@ -27,15 +27,12 @@
 		27A3D9071DE1367D005366A2 /* SenateComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3D9061DE1367D005366A2 /* SenateComController.swift */; };
 		27A3D9091DE13690005366A2 /* JointComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3D9081DE13690005366A2 /* JointComController.swift */; };
 		27A3D90B1DE13A1F005366A2 /* ComDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3D90A1DE13A1F005366A2 /* ComDetailCell.swift */; };
-		27A516241DDD8BE200BA55A9 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516231DDD8BE200BA55A9 /* NavController.swift */; };
 		27A516261DDE6C3000BA55A9 /* LegislatorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */; };
 		27A516281DDEA09300BA55A9 /* LegDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A516271DDEA09300BA55A9 /* LegDetailCell.swift */; };
 		27A5162C1DDED30700BA55A9 /* LegCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5162B1DDED30700BA55A9 /* LegCell.swift */; };
 		27ABF3BB1DE01C0C00D294EF /* ActiveBillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ABF3BA1DE01C0C00D294EF /* ActiveBillController.swift */; };
 		27C015711DE163CC00D07AA9 /* BillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C015701DE163CC00D07AA9 /* BillController.swift */; };
 		27C015731DE1640F00D07AA9 /* CommitteeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C015721DE1640F00D07AA9 /* CommitteeController.swift */; };
-		27C015771DE1672E00D07AA9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C015761DE1672E00D07AA9 /* MenuViewController.swift */; };
-		27C0BC311DE34AD500A2CBCF /* StatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC301DE34AD500A2CBCF /* StatePickerController.swift */; };
 		27C0BC331DE376D700A2CBCF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C0BC321DE376D700A2CBCF /* CoreData.framework */; };
 		27C0BC361DE3776100A2CBCF /* CongressSearchApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC341DE3776100A2CBCF /* CongressSearchApp.xcdatamodeld */; };
 		27C2E1721DE021FC003CF961 /* StateLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2E1711DE021FC003CF961 /* StateLegController.swift */; };
@@ -65,15 +62,12 @@
 		27A3D9061DE1367D005366A2 /* SenateComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenateComController.swift; sourceTree = "<group>"; };
 		27A3D9081DE13690005366A2 /* JointComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JointComController.swift; sourceTree = "<group>"; };
 		27A3D90A1DE13A1F005366A2 /* ComDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComDetailCell.swift; sourceTree = "<group>"; };
-		27A516231DDD8BE200BA55A9 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegislatorDetailViewController.swift; sourceTree = "<group>"; };
 		27A516271DDEA09300BA55A9 /* LegDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetailCell.swift; sourceTree = "<group>"; };
 		27A5162B1DDED30700BA55A9 /* LegCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegCell.swift; sourceTree = "<group>"; };
 		27ABF3BA1DE01C0C00D294EF /* ActiveBillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveBillController.swift; sourceTree = "<group>"; };
 		27C015701DE163CC00D07AA9 /* BillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillController.swift; sourceTree = "<group>"; };
 		27C015721DE1640F00D07AA9 /* CommitteeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitteeController.swift; sourceTree = "<group>"; };
-		27C015761DE1672E00D07AA9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		27C0BC301DE34AD500A2CBCF /* StatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatePickerController.swift; sourceTree = "<group>"; };
 		27C0BC321DE376D700A2CBCF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		27C0BC351DE3776100A2CBCF /* CongressSearchApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CongressSearchApp.xcdatamodel; sourceTree = "<group>"; };
 		27C2E1711DE021FC003CF961 /* StateLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateLegController.swift; sourceTree = "<group>"; };
@@ -130,7 +124,6 @@
 				27A3D8FC1DE02F0C005366A2 /* BillDetailCell.swift */,
 				27A5162B1DDED30700BA55A9 /* LegCell.swift */,
 				27A516251DDE6C3000BA55A9 /* LegislatorDetailViewController.swift */,
-				27A516231DDD8BE200BA55A9 /* NavController.swift */,
 				2741648E1DDB90CE00E41F13 /* Assets.xcassets */,
 				274164901DDB90CE00E41F13 /* LaunchScreen.storyboard */,
 				274164931DDB90CE00E41F13 /* Info.plist */,
@@ -146,8 +139,6 @@
 				27A3D90A1DE13A1F005366A2 /* ComDetailCell.swift */,
 				27C015701DE163CC00D07AA9 /* BillController.swift */,
 				27C015721DE1640F00D07AA9 /* CommitteeController.swift */,
-				27C015761DE1672E00D07AA9 /* MenuViewController.swift */,
-				27C0BC301DE34AD500A2CBCF /* StatePickerController.swift */,
 			);
 			path = CongressSearchApp;
 			sourceTree = "<group>";
@@ -309,7 +300,6 @@
 				27A3D9051DE1327D005366A2 /* CommitteeDetailController.swift in Sources */,
 				27A3D8FD1DE02F0C005366A2 /* BillDetailCell.swift in Sources */,
 				27A3D9091DE13690005366A2 /* JointComController.swift in Sources */,
-				27C015771DE1672E00D07AA9 /* MenuViewController.swift in Sources */,
 				27A3D9071DE1367D005366A2 /* SenateComController.swift in Sources */,
 				27A3D9011DE12E5B005366A2 /* HouseComController.swift in Sources */,
 				27A3D8FF1DE0D7DB005366A2 /* NewBillController.swift in Sources */,
@@ -320,8 +310,6 @@
 				27A3D8FB1DE026C4005366A2 /* BillDetailController.swift in Sources */,
 				274164881DDB90CE00E41F13 /* AppDelegate.swift in Sources */,
 				27A516261DDE6C3000BA55A9 /* LegislatorDetailViewController.swift in Sources */,
-				27A516241DDD8BE200BA55A9 /* NavController.swift in Sources */,
-				27C0BC311DE34AD500A2CBCF /* StatePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,7 +97,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 cur = (curSec?[indexPath.row])!
                 let first = cur["first_name"] as? String
                 let last = cur["last_name"] as? String
-                cell?.legname?.text = first! + " " + last!
+                cell?.legname?.text = last! + ", " + first!
                 cell?.legstate?.text = cur["state_name"] as? String
                 
                 let id = cur["bioguide_id"] as? String

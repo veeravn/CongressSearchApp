@@ -21,6 +21,7 @@ class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         comTitle.text = com["name"] as! String!
+        favComs = UserDefaults.standard.array(forKey: "favComs" ) as! [String]
         updateStar(id: (self.com["committee_id"] as? String)!)
         // Do any additional setup after loading the view.
     }
@@ -91,6 +92,7 @@ class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableV
             button.image = UIImage(named: "Christmas Star Filled-50.png")
             favComs.append(id)
             favcoms.set(favComs, forKey: "favComs")
+            return
         }
         if favComs.contains(id) {
             button.image = UIImage(named: "Christmas Star Filled-50.png")
@@ -104,6 +106,8 @@ class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableV
             favComs.append(id)
             favcoms.set(favComs, forKey: "favComs")
         }
+        let favs = UserDefaults.standard.array(forKey: "favComs") as! [String]
+        print(favs)
     }
     func updateStar(id:String) {
         if favComs.contains(id) {
