@@ -11,6 +11,7 @@
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		279041911DE984F700CAC69A /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279041901DE984F700CAC69A /* AboutController.swift */; };
 		27C0BC3A1DE52D4000A2CBCF /* HouseLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */; };
 		27C0BC3D1DE52D5000A2CBCF /* LegCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */; };
 		27C0BC3E1DE52D5000A2CBCF /* LegDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */; };
@@ -37,7 +38,6 @@
 		6F2554B2A5B76EDAA90DA066 /* Pods_SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FFD005F909CEB77763C9A /* Pods_SlideMenuControllerSwift.framework */; };
 		C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6461A315E87003B7CC7 /* AppDelegate.swift */; };
 		C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C539E6481A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld */; };
-		C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E64B1A315E87003B7CC7 /* MainViewController.swift */; };
 		C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C539E64D1A315E87003B7CC7 /* Main.storyboard */; };
 		C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C539E6501A315E87003B7CC7 /* Images.xcassets */; };
 		C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C539E6521A315E87003B7CC7 /* LaunchScreen.xib */; };
@@ -79,6 +79,7 @@
 		0E75C5A41BE3CAFE00844634 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		271CB5CEE1C8AA5D28D5AE1D /* Pods_SlideMenuControllerSwift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideMenuControllerSwift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		279041901DE984F700CAC69A /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseLegController.swift; sourceTree = "<group>"; };
 		27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegCell.swift; sourceTree = "<group>"; };
 		27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetailCell.swift; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		C539E6451A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E6461A315E87003B7CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C539E6491A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlideMenuControllerSwift.xcdatamodel; sourceTree = "<group>"; };
-		C539E64B1A315E87003B7CC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C539E64E1A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C539E6501A315E87003B7CC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C539E6531A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -342,7 +342,6 @@
 				27C0BC5E1DE6025300A2CBCF /* Committees */,
 				27C0BC521DE5FB3F00A2CBCF /* Legislators */,
 				27C0BC531DE5FB8600A2CBCF /* Bills */,
-				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
 				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
 				C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */,
@@ -350,6 +349,7 @@
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
 				C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */,
 				C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */,
+				279041901DE984F700CAC69A /* AboutController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -666,11 +666,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */,
-				C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */,
 				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
 				C5BF6A8C1BF340020064C18E /* ExSlideMenuController.swift in Sources */,
+				279041911DE984F700CAC69A /* AboutController.swift in Sources */,
 				C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */,
 				27C0BC431DE52D8000A2CBCF /* SenateLegController.swift in Sources */,
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,

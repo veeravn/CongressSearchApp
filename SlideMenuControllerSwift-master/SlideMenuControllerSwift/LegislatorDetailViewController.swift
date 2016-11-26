@@ -11,7 +11,7 @@ import SwiftyJSON
 class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var leg : [String:AnyObject] = [:]
-    let keys = ["first_name", "last_name", "state_name", "birthday", "gender", "chamber", "fax", "twitter_id", "website", "office", "term_end"]
+    let keys = ["first_name", "last_name", "state_name", "birthday", "gender", "chamber", "fax", "twitter_id", "facebook_id", "website", "office", "term_end"]
     var favLegs : [String] = []
     
     @IBOutlet var legImage: UIImageView!
@@ -48,12 +48,17 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         let term = self.leg["term_end"] as! String?
         let term_end = formatter.date(from: term!)
         var twitterurl : URL
-        if let twitter = self.leg["twitter_id"] as! String? {
-            twitterurl = URL(string: "https://www.twitter.com/" + twitter)!
+        if let twitter = self.leg["twitter_id"] {
+            twitterurl = URL(string: "https://www.twitter.com/" + (twitter as! String))!
         } else {
             twitterurl = URL(string: "N.A.")!
         }
-        
+        var facebookurl : URL
+        if let fb = self.leg["facebook_id"] {
+            facebookurl = URL(string: "https://www.facebook.com/" + (fb as! String))!
+        } else {
+            facebookurl = URL(string: "N.A.")!
+        }
         let weburl = URL(string: (self.leg["website"] as! String?)!)
         formatter.dateFormat = "dd MMM yyyy"
         switch keys[indexPath.row] {
@@ -83,9 +88,18 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
             break
         case "chamber":
             cell.title.text = "Chamber"
+            let imagev = UIImageView()
             if self.leg["chamber"] as! String? == "house" {
+                let i = URL(string: "http://cs-server.usc.edu:45678/hw/hw8/images/h.png")
+                let data = try? Data(contentsOf: i!)
+                imagev.image = UIImage(data: data!)
+                cell.addSubview(imagev)
                 cell.detail.text = "House"
+                
             } else {
+                let i = URL(string: "http://cs-server.usc.edu:45678/hw/hw8/images/s.svg")
+                let data = try? Data(contentsOf: i!)
+                imagev.image = UIImage(data: data!)
                 cell.detail.text = "Senate"
             }
             break
@@ -100,6 +114,10 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         case "twitter_id":
             cell.title.text = "Twitter Link"
             cell.detail.text = twitterurl.absoluteString
+            break
+        case "facebook_id":
+            cell.title.text = "Facebook Link"
+            cell.detail.text = facebookurl.absoluteString
             break
         case "website":
             cell.title.text = "Website Link"

@@ -29,6 +29,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     var billTabController: UIViewController!
     var comTabController: UIViewController!
     var favTabController: UIViewController!
+    var aboutController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +54,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let favTabController = storyboard.instantiateViewController(withIdentifier: "favTabController") as! FavoriteController
         self.favTabController = UINavigationController(rootViewController: favTabController)
+        
+        let aboutController = storyboard.instantiateViewController(withIdentifier: "aboutController") as! AboutController
+        self.aboutController = UINavigationController(rootViewController: aboutController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
@@ -83,7 +87,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         case .fav:
             self.slideMenuController()?.changeMainViewController(self.favTabController, close: true)
         case .about:
-            self.slideMenuController()?.changeMainViewController(self.favTabController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.aboutController, close: true)
         }
     }
 }

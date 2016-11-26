@@ -16,7 +16,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
-    let states : [String] = ["Alaska", "Alabama", "Arkansas", "American Samoa",
+    let states : [String] = ["All States", "Alaska", "Alabama", "Arkansas", "American Samoa",
                              "Arizona", "California", "Colorado", "Connecticut",
                              "District of Columbia", "Delaware", "Florida",
                              "Georgia", "Guam", "Hawaii", "Iowa", "Idaho",
@@ -37,7 +37,6 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.statepicker.isHidden = true
-        
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
 
         self.tabBarController?.navigationItem.rightBarButtonItem = stateFilterButton
@@ -58,6 +57,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     @IBAction func showStateFilter(_ sender: Any) {
         self.statepicker.isHidden = false
+        self.tblJSON.isHidden = true
     }
     
     //Legislator indexing
@@ -67,7 +67,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     var legDict = [String:[[String:AnyObject]]]()
     func generateLegsDict() {
         for leg in self.arrRes  {
-            let lname = leg["last_name"] as? String
+            let lname = leg["state_name"] as? String
             let key = "\(lname![(lname!.startIndex)])"
             
             if var legValues = legDict[key] {
@@ -83,7 +83,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     var flegDict = [String:[[String:AnyObject]]]()
     func generateFilterLegsDict() {
         for leg in self.filteredLegs  {
-            let lname = leg["last_name"] as? String
+            let lname = leg["state_name"] as? String
             let key = "\(lname![(lname!.startIndex)])"
             
             if var legValues = flegDict[key] {
@@ -216,7 +216,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         let legs = self.legDict[legKey]
         return (legs?[indexPath.row])!
     }
-    
+    //filter by state pickerview functions
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -228,14 +228,20 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.statepicker.isHidden = true
+        self.tblJSON.isHidden = false
         let selState = states[row]
-        shouldShowSearch = true
-        filteredLegs = self.arrRes.filter({(obj) -> Bool in
+        if selState == "All States" {
+            shouldShowSearch = false
+        } else {
+            shouldShowSearch = true
+            filteredLegs = self.arrRes.filter({(obj) -> Bool in
             //                print(obj)
-            let s = obj["state_name"] as? String
-            return s!.range(of: selState) != nil
-        })
-        generateFilterLegsDict()
+                let s = obj["state_name"] as? String
+                return s!.range(of: selState) != nil
+            })
+            generateFilterLegsDict()
+        }
+        tblJSON.reloadData()
     }
 
 }
