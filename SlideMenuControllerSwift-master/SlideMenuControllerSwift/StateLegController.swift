@@ -9,27 +9,38 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
-class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet var stateFilterButton: UIBarButtonItem!
     @IBOutlet var statepicker: UIPickerView!
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
-    var letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
-    var indexOfLetters = [String]()
+    let states : [String] = ["Alaska", "Alabama", "Arkansas", "American Samoa",
+                             "Arizona", "California", "Colorado", "Connecticut",
+                             "District of Columbia", "Delaware", "Florida",
+                             "Georgia", "Guam", "Hawaii", "Iowa", "Idaho",
+                             "Illinois", "Indiana", "Kansas", "Kentucky",
+                             "Louisiana", "Massachusetts", "Maryland", "Maine",
+                             "Michigan", "Minnesota", "Missouri", "Mississippi",
+                             "Montana", "North Carolina", "North Dakota", "Nebraska",
+                             "New Hampshire", "New Jersey", "New Mexico", "Nevada",
+                             "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+                             "Puerto Rico", "Rhode Island", "South Carolina",
+                             "South Dakota", "Tennessee", "Texas", "Utah", "Virginia",
+                             "Virgin Islands", "Vermont", "Washington", "Wisconsin",
+                             "West Virginia", "Wyoming"]
     //search function variables
     var filteredLegs = [[String:AnyObject]]()
     var shouldShowSearch = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.statepicker.isHidden = true
-//        indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
+        self.statepicker.isHidden = true
         
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
 
-        
+        self.tabBarController?.navigationItem.rightBarButtonItem = stateFilterButton
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -44,6 +55,9 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+    }
+    @IBAction func showStateFilter(_ sender: Any) {
+        self.statepicker.isHidden = false
     }
     
     //Legislator indexing
@@ -65,10 +79,29 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         legSection = [String](legDict.keys).sorted()
     }
-    
+    var flegSection = [String]()
+    var flegDict = [String:[[String:AnyObject]]]()
+    func generateFilterLegsDict() {
+        for leg in self.filteredLegs  {
+            let lname = leg["last_name"] as? String
+            let key = "\(lname![(lname!.startIndex)])"
+            
+            if var legValues = flegDict[key] {
+                legValues.append(leg as [String:AnyObject])
+                flegDict[key] = legValues
+            } else {
+                flegDict[key] = [leg as [String:AnyObject]]
+            }
+        }
+        flegSection = [String](flegDict.keys).sorted()
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
-            return filteredLegs.count
+            let legKey = flegSection[section]
+            if let legValues = flegDict[legKey] {
+                return legValues.count
+            }
+            return 0
         } else {
             let legKey = legSection[section]
             if let legValues = legDict[legKey] {
@@ -81,6 +114,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationItem.rightBarButtonItem = stateFilterButton    
     }
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
@@ -89,7 +123,22 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LegCell
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
-            cur = self.filteredLegs[indexPath.row]
+            let legKey = flegSection[indexPath.section]
+            if flegDict[legKey] != nil {
+                let curSec = flegDict[legKey]
+                cur = (curSec?[indexPath.row])!
+                let first = cur["first_name"] as? String
+                let last = cur["last_name"] as? String
+                cell?.legname?.text = last! + ", " + first!
+                cell?.legstate?.text = cur["state_name"] as? String
+                
+                let id = cur["bioguide_id"] as? String
+                let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+                let i = URL(string: imageurl)
+                let data = try? Data(contentsOf: i!)
+                cell?.legimage.image = UIImage(data: data!)
+
+            }
         } else {
             let legKey = legSection[indexPath.section]
             if legDict[legKey] != nil {
@@ -105,30 +154,37 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 let i = URL(string: imageurl)
                 let data = try? Data(contentsOf: i!)
                 cell?.legimage.image = UIImage(data: data!)
+
             }
-            
         }
-    
         return cell!
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-//        if(shouldShowSearch) {
-//            return 1
-//        } else {
-//            return numOfRows;
-//        }
-        return legSection.count
+        if(shouldShowSearch) {
+            return flegSection.count
+        } else {
+            return legSection.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return legSection[section]
+        if(shouldShowSearch) {
+            return flegSection[section]
+        } else {
+            return legSection[section]
+        }
     }
     
     // Index
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return legSection
+        if(shouldShowSearch) {
+            return flegSection
+        } else {
+            return legSection
+        }
     }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -152,6 +208,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
 
             }
             self.tabBarController?.tabBar.isHidden = true
+            self.removeNavigationBarItem()
         }
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
@@ -159,11 +216,26 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         let legs = self.legDict[legKey]
         return (legs?[indexPath.row])!
     }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return states.count
+    }
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return states[row]
+    }
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.statepicker.isHidden = true
+        let selState = states[row]
+        shouldShowSearch = true
+        filteredLegs = self.arrRes.filter({(obj) -> Bool in
+            //                print(obj)
+            let s = obj["state_name"] as? String
+            return s!.range(of: selState) != nil
+        })
+        generateFilterLegsDict()
+    }
 
-}
-extension UIPickerViewDelegate {
-    
-}
-extension UIPickerViewDataSource {
-    
 }

@@ -31,15 +31,16 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.navigationItem.titleView = nil
         self.navigationItem.title = "Legislators"
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
     }
 
-    
     @IBAction func filterLegs(_ sender: Any) {
-        if self.navigationItem.titleView != nil {
-            self.navigationItem.titleView = searchBar
+    
+        if self.tabBarController?.navigationItem.rightBarButtonItem?.image == (UIImage(named: "Search-22.png")) {
+            self.tabBarController?.navigationItem.titleView = searchBar
             filterButton.image = UIImage(named: "Cancel-22.png")
         } else {
-            self.navigationItem.titleView = nil
+            self.tabBarController?.navigationItem.titleView = nil
             self.navigationItem.title = "Legislators"
             filterButton.image = UIImage(named: "Search-22.png")
         }
@@ -73,72 +74,46 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if(shouldShowSearch) {
-                return filteredLegs.count
-            } else {
-                return self.numOfRows
-            }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(shouldShowSearch) {
+            return filteredLegs.count
+        } else {
+            return self.numOfRows
         }
-        
-        // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-        // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LegCell
-            var cur : [String:AnyObject]
-            if(shouldShowSearch) {
-                cur = self.filteredLegs[indexPath.row]
-            } else {
-                cur = self.arrRes[indexPath.row]
-            }
-            
-            let first = cur["first_name"] as? String
-            let last = cur["last_name"] as? String
-            cell?.legname?.text = last! + ", " + first!
-            cell?.legstate?.text = cur["state_name"] as? String
-            
-            let id = cur["bioguide_id"] as? String
-            let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
-            let i = URL(string: imageurl)
-            let data = try? Data(contentsOf: i!)
-            cell?.legimage.image = UIImage(data: data!)
-            
-            return cell!
-        }
-        
-        func numberOfSections(in tableView: UITableView) -> Int {
-//            return indexOfLetters.count;
-            return 1
-        }// Default is 1 if not implemented
-        
-        
-        // Editing
-        
-        // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
-        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return false
-        }
-        
-        // Index
-        
-        func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-            return indexOfLetters
-        }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
-        
-        func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-            return 0;
-        }// tell table which section corresponds to section title/index (e.g. "B",1))
+    }
     
+    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LegCell
+        var cur : [String:AnyObject]
+        if(shouldShowSearch) {
+            cur = self.filteredLegs[indexPath.row]
+        } else {
+            cur = self.arrRes[indexPath.row]
+        }
+        
+        let first = cur["first_name"] as? String
+        let last = cur["last_name"] as? String
+        cell?.legname?.text = last! + ", " + first!
+        cell?.legstate?.text = cur["state_name"] as? String
+        
+        let id = cur["bioguide_id"] as? String
+        let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+        let i = URL(string: imageurl)
+        let data = try? Data(contentsOf: i!)
+        cell?.legimage.image = UIImage(data: data!)
+        
+        return cell!
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "legislatorDetail" {
             let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
-                if self.tabBarItem.title == "State" {
-                    legDetailVC.returnId = "State"
-                }
+
                 //legDetailVC.returnId
             }
             self.tabBarController?.tabBar.isHidden = true

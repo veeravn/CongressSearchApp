@@ -15,8 +15,8 @@ class ExSlideMenuController : SlideMenuController {
             if vc is MainViewController ||
             vc is LegislatorController ||
             vc is BillController ||
-            vc is FavViewController ||
-            vc is ComViewController {
+            vc is FavoriteController ||
+            vc is CommitteeController {
                 return true
             }
         }

@@ -9,7 +9,7 @@ import UIKit
 
 enum LeftMenu: Int {
     case main = 0
-    case leg
+//    case leg
     case bill
     case com
     case fav
@@ -23,12 +23,12 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["Main", "Legislators", "Bills", "Committees", "Favorites", "About"]
+    var menus = ["Legislators", "Bills", "Committees", "Favorites", "About"]
     var mainViewController: UIViewController!
-    var legTabController: UIViewController!
+//    var legTabController: UIViewController!
     var billTabController: UIViewController!
-    var comViewController: UIViewController!
-    var favViewController: UIViewController!
+    var comTabController: UIViewController!
+    var favTabController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,17 +42,17 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let legTabController = storyboard.instantiateViewController(withIdentifier: "legTabController") as! LegislatorController
-        self.legTabController = UINavigationController(rootViewController: legTabController)
+//        let legTabController = storyboard.instantiateViewController(withIdentifier: "legTabController") as! LegislatorController
+//        self.legTabController = UINavigationController(rootViewController: legTabController)
         
         let billTabController = storyboard.instantiateViewController(withIdentifier: "billTabController") as! BillController
         self.billTabController = UINavigationController(rootViewController: billTabController)
         
-        let goViewController = storyboard.instantiateViewController(withIdentifier: "ComViewController") as! ComViewController
-        self.comViewController = UINavigationController(rootViewController: goViewController)
+        let comTabController = storyboard.instantiateViewController(withIdentifier: "comTabController") as! CommitteeController
+        self.comTabController = UINavigationController(rootViewController: comTabController)
         
-        let favViewController = storyboard.instantiateViewController(withIdentifier: "FavViewController") as! FavViewController
-        self.favViewController = UINavigationController(rootViewController: favViewController)
+        let favTabController = storyboard.instantiateViewController(withIdentifier: "favTabController") as! FavoriteController
+        self.favTabController = UINavigationController(rootViewController: favTabController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
@@ -74,16 +74,16 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         switch menu {
         case .main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-        case .leg:
-            self.slideMenuController()?.changeMainViewController(self.legTabController, close: true)
+//        case .leg:
+//            self.slideMenuController()?.changeMainViewController(self.legTabController, close: true)
         case .bill:
             self.slideMenuController()?.changeMainViewController(self.billTabController, close: true)
         case .com:
-            self.slideMenuController()?.changeMainViewController(self.comViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.comTabController, close: true)
         case .fav:
-            self.slideMenuController()?.changeMainViewController(self.favViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.favTabController, close: true)
         case .about:
-            self.slideMenuController()?.changeMainViewController(self.favViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.favTabController, close: true)
         }
     }
 }
@@ -92,7 +92,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .leg, .bill, .com, .fav, .about:
+            case .main, .bill, .com, .fav, .about:
                 return BaseTableViewCell.height()
             }
         }
@@ -122,7 +122,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .leg, .bill, .com, .fav, .about:
+            case .main, .bill, .com, .fav, .about:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell

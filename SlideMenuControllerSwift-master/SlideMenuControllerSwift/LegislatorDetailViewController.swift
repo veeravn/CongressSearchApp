@@ -7,14 +7,16 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var leg : [String:AnyObject] = [:]
     let keys = ["first_name", "last_name", "state_name", "birthday", "gender", "chamber", "fax", "twitter_id", "website", "office", "term_end"]
-    var returnId : String = ""
+    var favLegs : [String] = []
+    
     @IBOutlet var legImage: UIImageView!
     @IBOutlet var detailTable: UITableView!
+    @IBOutlet var button: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,14 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         let i = URL(string: imageurl)
         let data = try? Data(contentsOf: i!)
         self.legImage.image = UIImage(data: data!)
-        
         // Do any additional setup after loading the view.
+        favLegs = UserDefaults.standard.array(forKey: "favLegs") as! [String]
+        updateStar()
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 11
     }
@@ -117,7 +123,50 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         return cell
     }
+    func saveLeg(id:String) {
+        let favs = UserDefaults.standard
+        var json : Data
+        var jsonData : String = ""
+        do {
+        try json = JSONSerialization.data(withJSONObject: leg, options: JSONSerialization.WritingOptions.prettyPrinted)
+            jsonData = NSString(data: json, encoding: UInt.init()) as! String
+        } catch {
+            print(error)
+        }
+        
+        if favLegs.count == 0 {
+            button.image = UIImage(named: "Christmas Star Filled-44.png")
+            favLegs.append(jsonData)
+            favs.set(favLegs, forKey: "favLegs")
+        } else if favLegs.contains(jsonData) {
+            button.image = UIImage(named: "Christmas Star-44.png")
+            
+            let index = favLegs.index(of: jsonData)
+            favLegs.remove(at: index!)
+            favs.set(favLegs, forKey: "favLegs")
+            
+        } else {
+            button.image = UIImage(named: "Christmas Star Filled-44.png")
+            favLegs.append(jsonData)
+            favs.set(favLegs, forKey: "favLegs")
+        }
+    }
+    func updateStar() {
+        for leg in favLegs {
+            let data = leg.data(using: String.Encoding.utf8)!
+            let swiftyJsonVar = JSON(data: data)
+            let legDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
+            if (legDict?["bioguide_id"] as? String) == (self.leg["bioguide_id"] as? String) {
+                button.image = UIImage(named: "Christmas Star Filled-44.png")
+                break
+            }
+        }
+    }
 
+    @IBAction func saveFavLeg(_ sender: Any) {
+        let id = self.leg["bioguide_id"] as? String!
+        saveLeg(id: id!)
+    }
     /*
     // MARK: - Navigation
 

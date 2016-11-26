@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var bill : [String:AnyObject] = [:]
@@ -123,34 +123,47 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-    func saveBill(id:String) {
-        let favbills = UserDefaults.standard
+    func saveBill() {
+        let favs = UserDefaults.standard
+        var json : Data
+        var jsonData : String = ""
+        do {
+            try json = JSONSerialization.data(withJSONObject: bill, options: JSONSerialization.WritingOptions.prettyPrinted)
+            jsonData = NSString(data: json, encoding: UInt.init()) as! String
+        } catch {
+            print(error)
+        }
         if favBills.count == 0 {
             button.image = UIImage(named: "Christmas Star Filled-44.png")
-            favBills.append(id)
-            favbills.set(favBills, forKey: "favBills")
-        } else if favBills.contains(id) {
+            favBills.append(jsonData)
+            favs.set(favBills, forKey: "favBills")
+        } else if favBills.contains(jsonData) {
             button.image = UIImage(named: "Christmas Star-44.png")
             
-            let index = favBills.index(of: id)
+            let index = favBills.index(of: jsonData)
             favBills.remove(at: index!)
-            favbills.set(favBills, forKey: "favBills")
+            favs.set(favBills, forKey: "favBills")
             
         } else {
             button.image = UIImage(named: "Christmas Star Filled-44.png")
-            favBills.append(id)
-            favbills.set(favBills, forKey: "favBills")
+            favBills.append(jsonData)
+            favs.set(favBills, forKey: "favBills")
         }
     }
     func updateStar() {
-        
-            if favBills.contains(bill["bill_id"] as! String) {
+        for bill in favBills {
+            let data = bill.data(using: String.Encoding.utf8)!
+            let swiftyJsonVar = JSON(data: data)
+            let billDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
+            if (billDict?["bill_id"] as? String) == (self.bill["bill_id"]as? String)  {
                 button.image = UIImage(named: "Christmas Star Filled-44.png")
+                break
             }
+        }
+
     }
     @IBAction func saveFavBill(_ sender: Any) {
-        let id = self.bill["bill_id"] as? String!
-        saveBill(id: id!)
+        saveBill()
     }
     /*
     // MARK: - Navigation

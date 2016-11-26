@@ -23,6 +23,16 @@
 		27C0BC4E1DE5850600A2CBCF /* BillDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC491DE5850600A2CBCF /* BillDetailCell.swift */; };
 		27C0BC4F1DE5850600A2CBCF /* BillDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC4A1DE5850600A2CBCF /* BillDetailController.swift */; };
 		27C0BC501DE5850600A2CBCF /* NewBillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */; };
+		27C0BC591DE6024900A2CBCF /* CommitteeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC541DE6024900A2CBCF /* CommitteeController.swift */; };
+		27C0BC5A1DE6024900A2CBCF /* SenateComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC551DE6024900A2CBCF /* SenateComController.swift */; };
+		27C0BC5B1DE6024900A2CBCF /* JointComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC561DE6024900A2CBCF /* JointComController.swift */; };
+		27C0BC5C1DE6024900A2CBCF /* HouseComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC571DE6024900A2CBCF /* HouseComController.swift */; };
+		27C0BC5D1DE6024900A2CBCF /* ComDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC581DE6024900A2CBCF /* ComDetailCell.swift */; };
+		27C0BC601DE632D300A2CBCF /* CommitteeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC5F1DE632D300A2CBCF /* CommitteeDetailController.swift */; };
+		27C0BC621DE6430100A2CBCF /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC611DE6430100A2CBCF /* FavoriteController.swift */; };
+		27C0BC641DE6438400A2CBCF /* FavLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC631DE6438400A2CBCF /* FavLegController.swift */; };
+		27C0BC661DE643AF00A2CBCF /* FavBillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC651DE643AF00A2CBCF /* FavBillController.swift */; };
+		27C0BC681DE643D900A2CBCF /* FavComController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC671DE643D900A2CBCF /* FavComController.swift */; };
 		5E83E7F76FEC2B26D6D6787C /* Pods_SlideMenuControllerSwift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271CB5CEE1C8AA5D28D5AE1D /* Pods_SlideMenuControllerSwift_iOS.framework */; };
 		6F2554B2A5B76EDAA90DA066 /* Pods_SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FFD005F909CEB77763C9A /* Pods_SlideMenuControllerSwift.framework */; };
 		C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6461A315E87003B7CC7 /* AppDelegate.swift */; };
@@ -38,7 +48,6 @@
 		C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */; };
 		C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C811BE8994F0076A7C5 /* UIImageView.swift */; };
 		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
-		C5BD39DE1A6CD17B00D0AF95 /* ComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DD1A6CD17B00D0AF95 /* ComViewController.swift */; };
 		C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DF1A6CDC8100D0AF95 /* UIViewController.swift */; };
 		C5BF6A821BEEF1A70064C18E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */; };
 		C5BF6A841BEEF1E70064C18E /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */; };
@@ -82,6 +91,16 @@
 		27C0BC491DE5850600A2CBCF /* BillDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillDetailCell.swift; sourceTree = "<group>"; };
 		27C0BC4A1DE5850600A2CBCF /* BillDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillDetailController.swift; sourceTree = "<group>"; };
 		27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillController.swift; sourceTree = "<group>"; };
+		27C0BC541DE6024900A2CBCF /* CommitteeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitteeController.swift; sourceTree = "<group>"; };
+		27C0BC551DE6024900A2CBCF /* SenateComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenateComController.swift; sourceTree = "<group>"; };
+		27C0BC561DE6024900A2CBCF /* JointComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JointComController.swift; sourceTree = "<group>"; };
+		27C0BC571DE6024900A2CBCF /* HouseComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseComController.swift; sourceTree = "<group>"; };
+		27C0BC581DE6024900A2CBCF /* ComDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComDetailCell.swift; sourceTree = "<group>"; };
+		27C0BC5F1DE632D300A2CBCF /* CommitteeDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitteeDetailController.swift; sourceTree = "<group>"; };
+		27C0BC611DE6430100A2CBCF /* FavoriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
+		27C0BC631DE6438400A2CBCF /* FavLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavLegController.swift; sourceTree = "<group>"; };
+		27C0BC651DE643AF00A2CBCF /* FavBillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavBillController.swift; sourceTree = "<group>"; };
+		27C0BC671DE643D900A2CBCF /* FavComController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavComController.swift; sourceTree = "<group>"; };
 		286BC9D0A3E7852569DCC4DE /* Pods-SlideMenuControllerSwift-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideMenuControllerSwift-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideMenuControllerSwift-iOS/Pods-SlideMenuControllerSwift-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6FAD4731D6DEE19F2A1D5AB4 /* Pods_SlideMenuControllerSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideMenuControllerSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4FFD005F909CEB77763C9A /* Pods_SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +123,6 @@
 		C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
 		C5498C811BE8994F0076A7C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
-		C5BD39DD1A6CD17B00D0AF95 /* ComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComViewController.swift; sourceTree = "<group>"; };
 		C5BD39DF1A6CDC8100D0AF95 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,6 +202,30 @@
 				27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */,
 			);
 			name = Bills;
+			sourceTree = "<group>";
+		};
+		27C0BC5E1DE6025300A2CBCF /* Committees */ = {
+			isa = PBXGroup;
+			children = (
+				27C0BC5F1DE632D300A2CBCF /* CommitteeDetailController.swift */,
+				27C0BC541DE6024900A2CBCF /* CommitteeController.swift */,
+				27C0BC551DE6024900A2CBCF /* SenateComController.swift */,
+				27C0BC561DE6024900A2CBCF /* JointComController.swift */,
+				27C0BC571DE6024900A2CBCF /* HouseComController.swift */,
+				27C0BC581DE6024900A2CBCF /* ComDetailCell.swift */,
+			);
+			name = Committees;
+			sourceTree = "<group>";
+		};
+		27C0BC691DE643EC00A2CBCF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				27C0BC651DE643AF00A2CBCF /* FavBillController.swift */,
+				27C0BC671DE643D900A2CBCF /* FavComController.swift */,
+				27C0BC631DE6438400A2CBCF /* FavLegController.swift */,
+				27C0BC611DE6430100A2CBCF /* FavoriteController.swift */,
+			);
+			name = Favorites;
 			sourceTree = "<group>";
 		};
 		C03444607E329BE5258A4AB4 /* Frameworks */ = {
@@ -296,12 +338,13 @@
 		C5C1CE631A70F7C400B6E411 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				27C0BC691DE643EC00A2CBCF /* Favorites */,
+				27C0BC5E1DE6025300A2CBCF /* Committees */,
 				27C0BC521DE5FB3F00A2CBCF /* Legislators */,
 				27C0BC531DE5FB8600A2CBCF /* Bills */,
 				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
 				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
-				C5BD39DD1A6CD17B00D0AF95 /* ComViewController.swift */,
 				C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */,
 				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
@@ -623,7 +666,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */,
-				C5BD39DE1A6CD17B00D0AF95 /* ComViewController.swift in Sources */,
 				C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */,
 				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
@@ -634,19 +676,28 @@
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C5BF6A821BEEF1A70064C18E /* DataTableViewCell.swift in Sources */,
 				27C0BC461DE5327200A2CBCF /* LegislatorController.swift in Sources */,
+				27C0BC681DE643D900A2CBCF /* FavComController.swift in Sources */,
 				27C0BC501DE5850600A2CBCF /* NewBillController.swift in Sources */,
 				27C0BC401DE52D6800A2CBCF /* LegislatorDetailViewController.swift in Sources */,
+				27C0BC5B1DE6024900A2CBCF /* JointComController.swift in Sources */,
+				27C0BC621DE6430100A2CBCF /* FavoriteController.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
 				C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */,
 				27C0BC4C1DE5850600A2CBCF /* ActiveBillController.swift in Sources */,
 				C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */,
+				27C0BC5A1DE6024900A2CBCF /* SenateComController.swift in Sources */,
 				C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */,
 				C5C1CE5B1A70DADF00B6E411 /* FavViewController.swift in Sources */,
 				27C0BC441DE52D8000A2CBCF /* StateLegController.swift in Sources */,
+				27C0BC5C1DE6024900A2CBCF /* HouseComController.swift in Sources */,
 				27C0BC4E1DE5850600A2CBCF /* BillDetailCell.swift in Sources */,
 				C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */,
+				27C0BC5D1DE6024900A2CBCF /* ComDetailCell.swift in Sources */,
 				C5BF6A861BEF4C080064C18E /* SubContentsViewController.swift in Sources */,
 				27C0BC4F1DE5850600A2CBCF /* BillDetailController.swift in Sources */,
+				27C0BC601DE632D300A2CBCF /* CommitteeDetailController.swift in Sources */,
+				27C0BC591DE6024900A2CBCF /* CommitteeController.swift in Sources */,
+				27C0BC641DE6438400A2CBCF /* FavLegController.swift in Sources */,
 				27C0BC4D1DE5850600A2CBCF /* BillController.swift in Sources */,
 				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				27C0BC3A1DE52D4000A2CBCF /* HouseLegController.swift in Sources */,
@@ -654,6 +705,7 @@
 				C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */,
 				27C0BC3D1DE52D5000A2CBCF /* LegCell.swift in Sources */,
 				27C0BC3E1DE52D5000A2CBCF /* LegDetailCell.swift in Sources */,
+				27C0BC661DE643AF00A2CBCF /* FavBillController.swift in Sources */,
 				C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

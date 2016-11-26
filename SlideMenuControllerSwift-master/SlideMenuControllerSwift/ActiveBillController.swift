@@ -9,8 +9,9 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
-class ActiveBillController: UITableViewController,UISearchBarDelegate  {
+class ActiveBillController: UIViewController,UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet var filterButton: UIBarButtonItem!
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
@@ -22,11 +23,11 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
     func createSearchBar() {
         
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search Legislators"
+        searchBar.placeholder = "Search Bills"
         searchBar.delegate = self
         
         
-        self.navigationItem.titleView = searchBar
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
     }
 
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=bills&activeStatus=true"
 
         
+        tblJSON.estimatedRowHeight = 125
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -56,14 +58,28 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func filter() {
+        if self.tabBarController?.navigationItem.rightBarButtonItem?.image == (UIImage(named: "Search-22.png")) {
+            self.tabBarController?.navigationItem.titleView = searchBar
+            filterButton.image = UIImage(named: "Cancel-22.png")
+        } else {
+            self.tabBarController?.navigationItem.titleView = nil
+            self.navigationItem.title = "Legislators"
+            filterButton.image = UIImage(named: "Search-22.png")
+        }
+    }
+    
+    @IBAction func filterBills(_ sender: Any) {
+        filter()
+    }
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
             return self.filteredBills.count
         }
         return self.numOfRows
     }
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "billCell", for: indexPath)
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
@@ -71,15 +87,16 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
         } else {
             cur = self.arrRes[indexPath.row]
         }
+        cell.textLabel?.numberOfLines = 3
         cell.textLabel?.text = cur["official_title"] as? String
         
         return cell
     }
     
-    public override func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "billDetail", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -115,7 +132,7 @@ class ActiveBillController: UITableViewController,UISearchBarDelegate  {
         }
         self.tblJSON.reloadData()
     }
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
 }

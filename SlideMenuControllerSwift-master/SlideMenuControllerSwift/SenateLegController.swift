@@ -11,6 +11,7 @@ import Alamofire
 class SenateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var tblJSON: UITableView!
+    @IBOutlet var filterButton: UIBarButtonItem!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
     var letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
@@ -29,17 +30,16 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.navigationItem.titleView = nil
         self.navigationItem.title = "Legislators"
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
     }
 
     
-    @IBOutlet var filterButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         indexOfLetters = self.letters.characters.split(separator: " ").map(String.init)
         createSearchBar()
-        searchBar.isHidden = true
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
-            
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -59,12 +59,14 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func filterLegs(_ sender: Any) {
         filter()
     }
+    
+    
     func filter() {
-        if self.navigationItem.titleView != nil {
-            self.navigationItem.titleView = searchBar
+        if self.tabBarController?.navigationItem.rightBarButtonItem?.image == (UIImage(named: "Search-22.png")) {
+            self.tabBarController?.navigationItem.titleView = searchBar
             filterButton.image = UIImage(named: "Cancel-22.png")
         } else {
-            self.navigationItem.titleView = nil
+            self.tabBarController?.navigationItem.titleView = nil
             self.navigationItem.title = "Legislators"
             filterButton.image = UIImage(named: "Search-22.png")
         }
@@ -116,31 +118,13 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-    // Editing
     
-    // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
-    // Index
-    
-    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return indexOfLetters
-    }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
-    
-    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return 0;
-    }// tell table which section corresponds to section title/index (e.g. "B",1))
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "legislatorDetail" {
             let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
-                if self.tabBarItem.title == "State" {
-                    legDetailVC.returnId = "State"
-                }
                 //legDetailVC.returnId
             }
             

@@ -1,5 +1,5 @@
 //
-//  NewBillController.swift
+//  JointComController.swift
 //  CongressSearchApp
 //
 //  Created by Veerav Naidu on 11/19/16.
@@ -7,23 +7,23 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Alamofire
-class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet var searchButton: UIBarButtonItem!
+import SwiftyJSON
+class JointComController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     @IBOutlet var tblJSON: UITableView!
     var arrRes = [[String:AnyObject]]() //Array of dictionary
     var numOfRows = 0
     let searchBar = UISearchBar().self
     //search function variables
-    var filteredBills = [[String:AnyObject]]()
+    var filteredComs = [[String:AnyObject]]()
     var shouldShowSearch = false
     
+    @IBOutlet var searchButton: UIBarButtonItem!
     func createSearchBar() {
         
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search Legislators"
+        searchBar.placeholder = "Search Committees"
         searchBar.delegate = self
         
         
@@ -32,18 +32,19 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         createSearchBar()
         
-        let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=bills&activeStatus=false"
+        let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=committees"
+        self.tabBarController?.navigationItem.rightBarButtonItem = searchButton
         
-        tblJSON.estimatedRowHeight = 125
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
                 if let resData = swiftyJsonVar["results"].arrayObject {
                     self.arrRes = resData as! [[String:AnyObject]]
-                    self.arrRes = self.arrRes.sorted { ($0["bill_id"] as? String)! < ($1["bill_id"] as? String)! }
+                    let res = resData as! [[String:AnyObject]]
+                    self.arrRes = res.filter { $0["chamber"] as! String == "joint" }
+                    self.arrRes = self.arrRes.sorted { ($0["name"] as? String)! < ($1["name"] as? String)! }
                 }
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
@@ -51,14 +52,8 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
                 }
             }
         }
-
-        // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    @IBAction func filterBills(_ sender: Any) {
+    @IBAction func filterComs(_ sender: Any) {
         filter()
     }
     func filter() {
@@ -73,56 +68,53 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
-            return self.filteredBills.count
+            return filteredComs.count
+        } else {
+            return self.numOfRows
         }
-        return self.numOfRows
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "billCell", for: indexPath)
+        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "comCell", for: indexPath)
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
-            cur = self.filteredBills[indexPath.row]
+            cur = self.filteredComs[indexPath.row]
         } else {
             cur = self.arrRes[indexPath.row]
         }
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.text = cur["official_title"] as? String
-        
+        cell.textLabel?.text = cur["name"] as! String?
+        cell.detailTextLabel?.text = cur["committee_id"] as? String
         return cell
     }
-    
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "billDetail", sender: self)
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "billDetail" {
-            let billDetailVC = segue.destination as! BillDetailController
-            if let cell = self.tblJSON.indexPathForSelectedRow {
-                billDetailVC.bill = billAt(indexPath: cell as NSIndexPath)
-            }
-        }
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    func billAt(indexPath: NSIndexPath) -> [String:AnyObject] {
-        //let leg = self.arrRes[indexPath.section]
-        return self.arrRes[indexPath.row]
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        shouldShowSearch = true
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
+    }
+    public func updateSearchResults(for searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+        
+        filteredComs = self.arrRes.filter({(obj) -> Bool in
+            let f = obj["name"] as? String
+            return f!.range(of: searchString!) != nil
+        })
         self.tblJSON.reloadData()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText != "" {
             shouldShowSearch = true
-            filteredBills = self.arrRes.filter({(obj) -> Bool in
-                let t = obj["official_title"] as? String
-                return t!.range(of: searchText) != nil
+            filteredComs = self.arrRes.filter({(obj) -> Bool in
+                let f = obj["name"] as? String
+                return f!.range(of: searchText) != nil
             })
             
         } else {
@@ -130,10 +122,13 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
         }
         self.tblJSON.reloadData()
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.endEditing(true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "comDetail" {
+            let comDetailVC = segue.destination as! CommitteeDetailController
+            if let cell = self.tblJSON.indexPathForSelectedRow {
+                comDetailVC.com = self.arrRes[cell.row]
+            }
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
-
-    
-
 }
