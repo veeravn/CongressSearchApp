@@ -23,6 +23,7 @@ class FavLegController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let legDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
             self.favLegDetails.append(legDict!)
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
         // Do any additional setup after loading the view.
     }
 
@@ -33,6 +34,7 @@ class FavLegController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favLegDetails.count

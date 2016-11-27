@@ -22,7 +22,7 @@ class FavComController: UIViewController, UITableViewDataSource, UITableViewDele
             let comDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
             self.favComDetails.append(comDict!)
         }
-
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
         // Do any additional setup after loading the view.
     }
 

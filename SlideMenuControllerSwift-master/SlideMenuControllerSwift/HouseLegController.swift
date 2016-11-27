@@ -65,7 +65,7 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
-        
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     override func viewDidAppear(_ animated: Bool) {
        
@@ -73,6 +73,9 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
+        self.tabBarController?.navigationItem.titleView = nil
+        filterButton.image = UIImage(named: "Search-22.png")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {

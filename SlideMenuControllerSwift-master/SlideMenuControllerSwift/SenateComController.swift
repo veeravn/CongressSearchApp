@@ -64,6 +64,7 @@ class SenateComController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {

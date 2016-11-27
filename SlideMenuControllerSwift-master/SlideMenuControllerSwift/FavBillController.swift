@@ -22,12 +22,14 @@ class FavBillController: UIViewController, UITableViewDelegate, UITableViewDataS
             let legDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
             self.favBillDetails.append(legDict!)
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favBillDetails.count

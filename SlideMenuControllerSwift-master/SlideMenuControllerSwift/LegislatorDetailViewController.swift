@@ -105,8 +105,8 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
             break
         case "fax":
             cell.title.text = "Fax No."
-            if let faxNo = self.leg[keys[indexPath.row]] as! String? {
-                cell.detail.text = faxNo
+            if let faxNo = self.leg[keys[indexPath.row]] {
+                cell.detail.text = (faxNo as! String)
             } else {
                 cell.detail.text = "N.A."
             }

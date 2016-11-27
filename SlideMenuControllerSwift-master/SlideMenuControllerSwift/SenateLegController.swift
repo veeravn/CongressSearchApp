@@ -54,6 +54,7 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     
     @IBAction func filterLegs(_ sender: Any) {
@@ -117,6 +118,9 @@ class SenateLegController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
+        self.tabBarController?.navigationItem.titleView = nil
+        filterButton.image = UIImage(named: "Search-22.png")
     }
     
     

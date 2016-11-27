@@ -39,7 +39,6 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
         self.statepicker.isHidden = true
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
 
-        self.tabBarController?.navigationItem.rightBarButtonItem = stateFilterButton
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -54,7 +53,9 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
+    
     @IBAction func showStateFilter(_ sender: Any) {
         self.statepicker.isHidden = false
         self.tblJSON.isHidden = true
@@ -114,7 +115,12 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        self.navigationItem.rightBarButtonItem = stateFilterButton    
+        self.tabBarController?.navigationItem.rightBarButtonItem = stateFilterButton
+        self.tabBarController?.navigationItem.titleView = nil
+        stateFilterButton.title = "Filter"
+        stateFilterButton.image = nil
+        statepicker.isHidden = true
+        tblJSON.tableHeaderView = nil
     }
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
@@ -188,7 +194,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return 0;
+        return legSection.index(of: title)!
     }// tell table which section corresponds to section title/index (e.g. "B",1))
     
     

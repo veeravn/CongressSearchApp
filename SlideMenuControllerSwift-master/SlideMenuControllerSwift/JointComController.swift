@@ -52,6 +52,7 @@ class JointComController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     @IBAction func filterComs(_ sender: Any) {
         filter()

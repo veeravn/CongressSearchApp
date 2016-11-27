@@ -51,7 +51,7 @@ class ActiveBillController: UIViewController,UISearchBarDelegate, UITableViewDel
                 }
             }
         }
-
+        self.tblJSON.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
