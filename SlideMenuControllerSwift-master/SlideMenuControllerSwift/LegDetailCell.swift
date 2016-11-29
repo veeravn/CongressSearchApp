@@ -10,8 +10,10 @@ import UIKit
 
 class LegDetailCell: UITableViewCell {
 
+    @IBOutlet var hyperLink: UIButton!
     @IBOutlet var detail: UILabel!
     @IBOutlet var title: UILabel!
+    var website : URL! = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +24,19 @@ class LegDetailCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    @IBAction func openLinks(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Twitter Link"{
+           sender.titleLabel?.text = "Twitter Link"
+        } else if sender.titleLabel?.text == "Facebook Link" {
+            sender.titleLabel?.text = "Facebook Link"
+        } else {
+            sender.titleLabel?.text = "Website Link"
+        }
+        if hyperLink != nil {
+            UIApplication.shared.openURL(website)
+        }
+
+    }
+
 
 }

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import SwiftSpinner
 class StateLegController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet var stateFilterButton: UIBarButtonItem!
@@ -36,9 +37,11 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//
         self.statepicker.isHidden = true
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=legislators"
-
+        SwiftSpinner.show("Loading Congress Data")
         Alamofire.request(url).responseJSON { (responseJSON) -> Void in
             if((responseJSON.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseJSON.result.value!)
@@ -50,6 +53,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.numOfRows = self.arrRes.count
                     self.generateLegsDict()
                     self.tblJSON.reloadData()
+                    SwiftSpinner.hide()
                 }
             }
         }
@@ -114,6 +118,7 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.navigationItem.rightBarButtonItem = stateFilterButton
         self.tabBarController?.navigationItem.titleView = nil

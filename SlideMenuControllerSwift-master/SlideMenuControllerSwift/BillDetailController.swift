@@ -67,6 +67,8 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         
 //        let pdf = URL(string: (pdfurl as! String?))
         formatter.dateFormat = "dd MMM yyyy"
+        cell.detail.isHidden = false
+        cell.pdf.isHidden = true
         switch keys[indexPath.row] {
         case "bill_id":
             cell.title.text = "Bill ID"
@@ -89,8 +91,11 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             break
         case "pdf":
+            cell.detail.isHidden = true
+            cell.pdf.isHidden = false
             cell.title.text = "PDF"
-            cell.detail.text = pdfurl?.relativeString
+            cell.pdf.setTitle("PDF Link", for: .normal)
+            cell.pdfurl = pdfurl
             break
         case "chamber":
             cell.title.text = "Chamber"
@@ -127,9 +132,20 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         let favs = UserDefaults.standard
         var json : Data
         var jsonData : String = ""
+        var exists : Bool = false
+        for fav in favBills {
+            let id = bill["bill_id"] as? String
+            if fav.range(of: id!) != nil {
+                jsonData = fav
+                exists = true
+                break
+            }
+        }
         do {
-            try json = JSONSerialization.data(withJSONObject: bill, options: JSONSerialization.WritingOptions.prettyPrinted)
-            jsonData = NSString(data: json, encoding: UInt.init()) as! String
+            if !exists {
+                try json = JSONSerialization.data(withJSONObject: bill, options: JSONSerialization.WritingOptions.prettyPrinted)
+                jsonData = NSString(data: json, encoding: UInt.init()) as! String
+            }
         } catch {
             print(error)
         }
@@ -137,9 +153,8 @@ class BillDetailController: UIViewController, UITableViewDelegate, UITableViewDa
             button.image = UIImage(named: "Christmas Star Filled-44.png")
             favBills.append(jsonData)
             favs.set(favBills, forKey: "favBills")
-        } else if favBills.contains(jsonData) {
+        } else if exists {
             button.image = UIImage(named: "Christmas Star-44.png")
-            
             let index = favBills.index(of: jsonData)
             favBills.remove(at: index!)
             favs.set(favBills, forKey: "favBills")

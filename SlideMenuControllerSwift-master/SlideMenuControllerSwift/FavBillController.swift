@@ -15,20 +15,36 @@ class FavBillController: UIViewController, UITableViewDelegate, UITableViewDataS
     var favBillDetails : [[String:AnyObject]] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        favBills = UserDefaults.standard.array(forKey: "favBills") as! [String]
-        for bill in favBills {
-            let data = bill.data(using: String.Encoding.utf8)!
-            let swiftyJsonVar = JSON(data: data)
-            let legDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
-            self.favBillDetails.append(legDict!)
-        }
+        getFavs()
         self.tblJSON.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0);
         // Do any additional setup after loading the view.
     }
-
+    func getFavs() {
+        if UserDefaults.standard.array(forKey: "favBills") != nil {
+            favBills = UserDefaults.standard.array(forKey: "favBills") as! [String]
+            favBillDetails = []
+            for bill in favBills {
+                let data = bill.data(using: String.Encoding.utf8)!
+                let swiftyJsonVar = JSON(data: data)
+                let legDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
+                self.favBillDetails.append(legDict!)
+            }
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd"
+            self.favBillDetails = self.favBillDetails.sorted {
+                let ds1 = $0["introduced_on"] as? String
+                let ds2 = $1["introduced_on"] as? String
+                let d1 = (df.date(from: ds1!))
+                let d2 = (df.date(from: ds2!))
+                return d1! > d2!
+            }
+        }
+        self.tblJSON.reloadData()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        getFavs()
         
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

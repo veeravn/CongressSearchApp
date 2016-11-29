@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var com : [String:AnyObject] = [:]
@@ -16,15 +16,17 @@ class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var detailTable : UITableView!
     @IBOutlet var favComStar: UIBarButtonItem!
     
-    @IBOutlet var button: UIBarButtonItem!
     var favComs : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = favComStar
         comTitle.text = com["name"] as! String!
         if UserDefaults.standard.array(forKey: "favComs" ) != nil {
             favComs = UserDefaults.standard.array(forKey: "favComs" ) as! [String]
+            updateStar()
         }
-        updateStar(id: (self.com["committee_id"] as? String)!)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -85,35 +87,54 @@ class CommitteeDetailController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     @IBAction func saveFavCom(_ sender: Any) {
-        let id = self.com["committee_id"] as? String!
-        saveCom(id: id!)
+        saveCom()
     }
-    func saveCom(id:String) {
-        let favcoms = UserDefaults.standard
-        if favComs.count == 0 {
-            button.image = UIImage(named: "Christmas Star Filled-50.png")
-            favComs.append(id)
-            favcoms.set(favComs, forKey: "favComs")
-            return
+    func saveCom() {
+        let favs = UserDefaults.standard
+        var json : Data
+        var jsonData : String = ""
+        var exists : Bool = false
+        for fav in favComs {
+            let id = com["committee_id"] as? String
+            if fav.range(of: id!) != nil {
+                jsonData = fav
+                exists = true
+                break
+            }
         }
-        if favComs.contains(id) {
-            button.image = UIImage(named: "Christmas Star Filled-50.png")
-            
-            let index = favComs.index(of: id)
+        do {
+            if !exists {
+                try json = JSONSerialization.data(withJSONObject: com, options: JSONSerialization.WritingOptions.prettyPrinted)
+                jsonData = NSString(data: json, encoding: UInt.init()) as! String
+            }
+        } catch {
+            print(error)
+        }
+        if favComs.count == 0 {
+            favComStar.image = UIImage(named: "Christmas Star Filled-44.png")
+            favComs.append(jsonData)
+            favs.set(favComs, forKey: "favComs")
+        } else if exists {
+            favComStar.image = UIImage(named: "Christmas Star-44.png")
+            let index = favComs.index(of: jsonData)
             favComs.remove(at: index!)
-            favcoms.set(favComs, forKey: "favComs")
+            favs.set(favComs, forKey: "favComs")
             
         } else {
-            button.image = UIImage(named: "Christmas Star-50.png")
-            favComs.append(id)
-            favcoms.set(favComs, forKey: "favComs")
+            favComStar.image = UIImage(named: "Christmas Star Filled-44.png")
+            favComs.append(jsonData)
+            favs.set(favComs, forKey: "favComs")
         }
-        let favs = UserDefaults.standard.array(forKey: "favComs") as! [String]
-        print(favs)
     }
-    func updateStar(id:String) {
-        if favComs.contains(id) {
-            button.image = UIImage(named: "Christmas Star Filled-50.png")
+    func updateStar() {
+        for com in favComs {
+            let data = com.data(using: String.Encoding.utf8)!
+            let swiftyJsonVar = JSON(data: data)
+            let comDict = (swiftyJsonVar.dictionaryObject as? [String:AnyObject])
+            if (comDict?["committee_id"] as? String) == (self.com["committee_id"] as? String) {
+                favComStar.image = UIImage(named: "Christmas Star Filled-44.png")
+                break
+            }
         }
     }
 

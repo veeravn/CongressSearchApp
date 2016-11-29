@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
     
     var leg : [String:AnyObject] = [:]
     let keys = ["first_name", "last_name", "state_name", "birthday", "gender", "chamber", "fax", "twitter_id", "facebook_id", "website", "office", "term_end"]
@@ -26,15 +26,19 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         let data = try? Data(contentsOf: i!)
         self.legImage.image = UIImage(data: data!)
         // Do any additional setup after loading the view.
-        favLegs = UserDefaults.standard.array(forKey: "favLegs") as! [String]
-        updateStar()
+        if (UserDefaults.standard.array(forKey: "favLegs") != nil) {
+            favLegs = UserDefaults.standard.array(forKey: "favLegs") as! [String]
+            updateStar()
+        }
+        
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return keys.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,26 +63,38 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         } else {
             facebookurl = URL(string: "N.A.")!
         }
-        let weburl = URL(string: (self.leg["website"] as! String?)!)
+        let weburl : URL
+        if let web = (self.leg["website"] as? String) {
+            weburl = URL(string: (web))!
+        } else {
+            weburl = URL(string: "N.A.")!
+        }
         formatter.dateFormat = "dd MMM yyyy"
+        
+        cell.detail.isHidden = false
         switch keys[indexPath.row] {
         case "first_name":
+            cell.hyperLink.isHidden = true
             cell.title.text = "First Name"
-            cell.detail.text = self.leg[keys[indexPath.row]] as! String?
+            cell.detail.text = self.leg["first_name"] as! String?
             break
         case "last_name":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Last Name"
-            cell.detail.text = self.leg[keys[indexPath.row]] as! String?
+            cell.detail.text = self.leg["last_name"] as! String?
             break
         case "state_name":
+            cell.hyperLink.isHidden = true
             cell.title.text = "State Name"
-            cell.detail.text = self.leg[keys[indexPath.row]] as! String?
+            cell.detail.text = self.leg["birthday"] as! String?
             break
         case "birthday":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Birth Date"
             cell.detail.text = formatter.string(from: birthDate!)
             break
         case "gender":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Gender"
             if self.leg["gender"] as! String? == "M" {
                 cell.detail.text = "Male"
@@ -87,52 +103,72 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
             }
             break
         case "chamber":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Chamber"
-            let imagev = UIImageView()
             if self.leg["chamber"] as! String? == "house" {
-                let i = URL(string: "http://cs-server.usc.edu:45678/hw/hw8/images/h.png")
-                let data = try? Data(contentsOf: i!)
-                imagev.image = UIImage(data: data!)
-                cell.addSubview(imagev)
                 cell.detail.text = "House"
-                
             } else {
-                let i = URL(string: "http://cs-server.usc.edu:45678/hw/hw8/images/s.svg")
-                let data = try? Data(contentsOf: i!)
-                imagev.image = UIImage(data: data!)
                 cell.detail.text = "Senate"
             }
             break
         case "fax":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Fax No."
-            if let faxNo = self.leg[keys[indexPath.row]] {
-                cell.detail.text = (faxNo as! String)
+            if let fax = (self.leg["fax"] as? String) {
+                cell.detail.text = fax
             } else {
                 cell.detail.text = "N.A."
             }
             break
         case "twitter_id":
+            
             cell.title.text = "Twitter Link"
-            cell.detail.text = twitterurl.absoluteString
+            if twitterurl.absoluteString != "N.A." {
+                cell.detail.isHidden = true
+                cell.hyperLink.setTitle("Twitter Link", for: .normal)
+                cell.website = twitterurl
+            } else {
+                cell.detail.text = twitterurl.absoluteString
+                cell.hyperLink.isHidden = true
+            }
             break
         case "facebook_id":
             cell.title.text = "Facebook Link"
-            cell.detail.text = facebookurl.absoluteString
+            if facebookurl.absoluteString != "N.A." {
+                cell.detail.isHidden = true
+                cell.hyperLink.isHidden = false
+                cell.hyperLink.setTitle("Facebook Link", for: .normal)
+                cell.website = facebookurl
+            } else {
+                cell.detail.text = facebookurl.absoluteString
+                cell.hyperLink.isHidden = true
+            }
             break
         case "website":
             cell.title.text = "Website Link"
-            cell.detail.text = weburl?.absoluteString
+            if weburl.absoluteString != "N.A." {
+                cell.hyperLink.isHidden = false
+                cell.detail.isHidden = true
+                cell.hyperLink.setTitle("Website Link", for: .normal)
+                cell.website = weburl
+            } else {
+                cell.detail.text = weburl.absoluteString
+                cell.hyperLink.isHidden = true
+            }
             break
         case "office":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Office No."
-            cell.detail.text = self.leg[keys[indexPath.row]] as! String?
+            cell.detail.text = self.leg["office"] as! String?
             break
         case "term_end":
+            cell.hyperLink.isHidden = true
             cell.title.text = "Term Ends on"
             cell.detail.text = formatter.string(from: term_end!)
             break
             
         default:
+            cell.hyperLink.isHidden = true
             cell.title.text = ""
             cell.detail.text = " "
             break
@@ -145,9 +181,20 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
         let favs = UserDefaults.standard
         var json : Data
         var jsonData : String = ""
+        var exists : Bool = false
+        for fav in favLegs {
+            let id = leg["bioguide_id"] as? String
+            if fav.range(of: id!) != nil {
+                jsonData = fav
+                exists = true
+                break
+            }
+        }
         do {
-        try json = JSONSerialization.data(withJSONObject: leg, options: JSONSerialization.WritingOptions.prettyPrinted)
-            jsonData = NSString(data: json, encoding: UInt.init()) as! String
+            if !exists {
+                try json = JSONSerialization.data(withJSONObject: leg, options: JSONSerialization.WritingOptions.prettyPrinted)
+                jsonData = NSString(data: json, encoding: UInt.init()) as! String
+            }
         } catch {
             print(error)
         }
@@ -156,9 +203,8 @@ class LegislatorDetailViewController: UIViewController, UITableViewDelegate, UIT
             button.image = UIImage(named: "Christmas Star Filled-44.png")
             favLegs.append(jsonData)
             favs.set(favLegs, forKey: "favLegs")
-        } else if favLegs.contains(jsonData) {
+        } else if exists {
             button.image = UIImage(named: "Christmas Star-44.png")
-            
             let index = favLegs.index(of: jsonData)
             favLegs.remove(at: index!)
             favs.set(favLegs, forKey: "favLegs")

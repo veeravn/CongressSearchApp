@@ -10,8 +10,10 @@ import UIKit
 
 class BillDetailCell: UITableViewCell {
 
+    @IBOutlet var pdf: UIButton!
     @IBOutlet var detail: UILabel!
     @IBOutlet var title: UILabel!
+    var pdfurl : URL? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +23,10 @@ class BillDetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    @IBAction func openPDF(_ sender: Any) {
+        if pdfurl != nil {
+            UIApplication.shared.openURL(pdfurl!)
+        }
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftSpinner
 class JointComController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var tblJSON: UITableView!
@@ -32,8 +33,9 @@ class JointComController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createSearchBar()
         
+        createSearchBar()
+        SwiftSpinner.show("Loading Congress Data")
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=committees"
         self.tabBarController?.navigationItem.rightBarButtonItem = searchButton
         
@@ -49,6 +51,7 @@ class JointComController: UIViewController, UITableViewDataSource, UITableViewDe
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
                     self.tblJSON.reloadData()
+                    SwiftSpinner.hide()
                 }
             }
         }

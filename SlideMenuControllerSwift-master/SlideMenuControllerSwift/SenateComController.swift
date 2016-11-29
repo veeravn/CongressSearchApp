@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftSpinner
 class SenateComController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var searchButton: UIBarButtonItem!
@@ -44,6 +45,7 @@ class SenateComController: UIViewController, UITableViewDataSource, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        SwiftSpinner.show("Loading Congress Data")
         createSearchBar()
         
         let url = "http://congressinfo-env.us-west-1.elasticbeanstalk.com/congress/congress.php?dbType=committees"
@@ -61,6 +63,7 @@ class SenateComController: UIViewController, UITableViewDataSource, UITableViewD
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
                     self.tblJSON.reloadData()
+                    SwiftSpinner.hide()
                 }
             }
         }

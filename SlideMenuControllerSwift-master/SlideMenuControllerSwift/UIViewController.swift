@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftSpinner
 extension UIViewController {
     
     func setNavigationBarItem() {
@@ -24,5 +24,18 @@ extension UIViewController {
         self.navigationItem.rightBarButtonItem = nil
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.removeRightGestures()
+    }
+    func delay(seconds: Double, completion: @escaping () -> ()) {
+        let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
+        
+        DispatchQueue.main.asyncAfter(deadline: popTime) {
+            completion()
+        }
+    }
+    func congressSpinner() {
+        SwiftSpinner.show(delay: 0.5, title: "Shouldn't see this one", animated: true)
+        SwiftSpinner.hide()
+        
+        SwiftSpinner.show("Loading Congress Data", animated: true)
     }
 }

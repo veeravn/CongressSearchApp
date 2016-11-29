@@ -123,7 +123,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ev-Sj-YGO">
                                                     <rect key="frame" x="41" y="22" width="175" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -213,10 +213,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0Dv-Ro-az0">
+                                                    <rect key="frame" x="187" y="0.0" width="188" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Links"/>
+                                                    <connections>
+                                                        <action selector="openLinks:" destination="DpV-Y7-Ysv" eventType="touchUpInside" id="cdQ-gN-9z4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detail" destination="ee8-PA-s8i" id="4fP-Wl-sfy"/>
+                                            <outlet property="hyperLink" destination="0Dv-Ro-az0" id="DNg-Gb-4sE"/>
                                             <outlet property="title" destination="COg-2I-AFR" id="U1f-4O-374"/>
                                         </connections>
                                     </tableViewCell>
@@ -244,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39l-dK-lLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3209" y="1062"/>
+            <point key="canvasLocation" x="3208.8000000000002" y="1061.9190404797603"/>
         </scene>
         <!--Senate Legislators-->
         <scene sceneID="8R5-tH-gEj">
@@ -791,10 +800,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4G-nc-5LR">
+                                                    <rect key="frame" x="170" y="8" width="205" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="openPDF:" destination="zAD-Fk-BYp" eventType="touchUpInside" id="vBE-sE-aEy"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detail" destination="xa6-3S-ZZ6" id="pRY-yd-DND"/>
+                                            <outlet property="pdf" destination="G4G-nc-5LR" id="iXz-oi-BAm"/>
                                             <outlet property="title" destination="A5i-RT-WYB" id="tUQ-O5-6WR"/>
                                         </connections>
                                     </tableViewCell>
@@ -831,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlK-kp-eXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.5" y="-750.5"/>
+            <point key="canvasLocation" x="3207.1999999999998" y="-750.67466266866575"/>
         </scene>
         <!--Senate Committees-->
         <scene sceneID="qm3-Sy-b3I">
@@ -977,22 +995,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Committee Details" id="2Qf-6v-9K5">
-                        <barButtonItem key="rightBarButtonItem" image="Christmas Star-50" id="PmX-Zn-I5g">
+                        <barButtonItem key="rightBarButtonItem" image="Christmas Star-44" id="ZDg-dB-RcF">
                             <connections>
-                                <action selector="saveFavCom:" destination="5Mn-0j-4Pd" id="Wuc-us-eid"/>
+                                <action selector="saveFavCom:" destination="5Mn-0j-4Pd" id="aEg-9e-aX4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="PmX-Zn-I5g" id="YzA-uX-G4N"/>
                         <outlet property="comTitle" destination="Hml-90-xcU" id="S54-DX-ZHL"/>
                         <outlet property="detailTable" destination="7Os-n3-ab5" id="xj4-II-57O"/>
-                        <outlet property="favComStar" destination="PmX-Zn-I5g" id="zBo-ME-E9h"/>
+                        <outlet property="favComStar" destination="ZDg-dB-RcF" id="ZpC-sU-YSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gz2-h3-cGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3209" y="3303"/>
+            <point key="canvasLocation" x="3208.8000000000002" y="3302.698650674663"/>
         </scene>
         <!--House Committees-->
         <scene sceneID="91v-h7-zoU">
@@ -1281,7 +1298,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5Mn-0j-4Pd" kind="show" id="Wey-y1-lAR"/>
+                                            <segue destination="5Mn-0j-4Pd" kind="show" identifier="comDetail" id="Wey-y1-lAR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1411,13 +1428,12 @@
     </scenes>
     <resources>
         <image name="Christmas Star-44" width="44" height="44"/>
-        <image name="Christmas Star-50" width="50" height="50"/>
         <image name="Search-22" width="22" height="22"/>
         <image name="Veerav_Naidu" width="3281" height="3012"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="82t-L3-W7k"/>
-        <segue reference="Rk2-bk-q0a"/>
+        <segue reference="5Qn-Sx-7uo"/>
+        <segue reference="Wey-y1-lAR"/>
         <segue reference="dGT-zH-jZS"/>
     </inferredMetricsTieBreakers>
 </document>
