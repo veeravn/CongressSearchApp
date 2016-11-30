@@ -12,6 +12,8 @@
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		279041911DE984F700CAC69A /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279041901DE984F700CAC69A /* AboutController.swift */; };
+		279041961DEE5A3600CAC69A /* BillListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279041941DEE5A3600CAC69A /* BillListCell.swift */; };
+		279041971DEE5A3600CAC69A /* BillListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279041951DEE5A3600CAC69A /* BillListCell.xib */; };
 		27C0BC3A1DE52D4000A2CBCF /* HouseLegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */; };
 		27C0BC3D1DE52D5000A2CBCF /* LegCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */; };
 		27C0BC3E1DE52D5000A2CBCF /* LegDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */; };
@@ -43,7 +45,6 @@
 		C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C539E6521A315E87003B7CC7 /* LaunchScreen.xib */; };
 		C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
-		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
 		C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */; };
 		C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */; };
 		C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C811BE8994F0076A7C5 /* UIImageView.swift */; };
@@ -55,7 +56,6 @@
 		C5BF6A8A1BF3335D0064C18E /* SubContentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */; };
 		C5BF6A8C1BF340020064C18E /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */; };
 		C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF6A8D1BF34A8B0064C18E /* UIApplication.swift */; };
-		C5C1CE5B1A70DADF00B6E411 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */; };
 		C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */; };
 		C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5E1A70F2FD00B6E411 /* String.swift */; };
 		C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */; };
@@ -80,6 +80,8 @@
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		271CB5CEE1C8AA5D28D5AE1D /* Pods_SlideMenuControllerSwift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideMenuControllerSwift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		279041901DE984F700CAC69A /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		279041941DEE5A3600CAC69A /* BillListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillListCell.swift; sourceTree = "<group>"; };
+		279041951DEE5A3600CAC69A /* BillListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillListCell.xib; sourceTree = "<group>"; };
 		27C0BC391DE52D4000A2CBCF /* HouseLegController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseLegController.swift; sourceTree = "<group>"; };
 		27C0BC3B1DE52D5000A2CBCF /* LegCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegCell.swift; sourceTree = "<group>"; };
 		27C0BC3C1DE52D5000A2CBCF /* LegDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetailCell.swift; sourceTree = "<group>"; };
@@ -118,7 +120,6 @@
 		C539E65E1A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		C539E66D1A316F5F003B7CC7 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
 		C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
 		C5498C811BE8994F0076A7C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 		C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SubContentsViewController.storyboard; sourceTree = "<group>"; };
 		C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
 		C5BF6A8D1BF34A8B0064C18E /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
 		C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C5C1CE5E1A70F2FD00B6E411 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
@@ -178,6 +178,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		279041981DEEAB3D00CAC69A /* About */ = {
+			isa = PBXGroup;
+			children = (
+				279041901DE984F700CAC69A /* AboutController.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		27C0BC521DE5FB3F00A2CBCF /* Legislators */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +207,8 @@
 				27C0BC481DE5850600A2CBCF /* BillController.swift */,
 				27C0BC491DE5850600A2CBCF /* BillDetailCell.swift */,
 				27C0BC4A1DE5850600A2CBCF /* BillDetailController.swift */,
+				279041941DEE5A3600CAC69A /* BillListCell.swift */,
+				279041951DEE5A3600CAC69A /* BillListCell.xib */,
 				27C0BC4B1DE5850600A2CBCF /* NewBillController.swift */,
 			);
 			name = Bills;
@@ -338,18 +348,16 @@
 		C5C1CE631A70F7C400B6E411 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				27C0BC691DE643EC00A2CBCF /* Favorites */,
-				27C0BC5E1DE6025300A2CBCF /* Committees */,
 				27C0BC521DE5FB3F00A2CBCF /* Legislators */,
 				27C0BC531DE5FB8600A2CBCF /* Bills */,
+				27C0BC5E1DE6025300A2CBCF /* Committees */,
+				27C0BC691DE643EC00A2CBCF /* Favorites */,
+				279041981DEEAB3D00CAC69A /* About */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
-				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
-				C5C1CE5A1A70DADF00B6E411 /* FavViewController.swift */,
 				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
 				C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */,
 				C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */,
-				279041901DE984F700CAC69A /* AboutController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -510,6 +518,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279041971DEE5A3600CAC69A /* BillListCell.xib in Resources */,
 				C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */,
 				C5BF6A8A1BF3335D0064C18E /* SubContentsViewController.storyboard in Resources */,
 				C5BF6A841BEEF1E70064C18E /* DataTableViewCell.xib in Resources */,
@@ -668,6 +677,7 @@
 				C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */,
 				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
+				279041961DEE5A3600CAC69A /* BillListCell.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
 				C5BF6A8C1BF340020064C18E /* ExSlideMenuController.swift in Sources */,
 				279041911DE984F700CAC69A /* AboutController.swift in Sources */,
@@ -687,7 +697,6 @@
 				C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */,
 				27C0BC5A1DE6024900A2CBCF /* SenateComController.swift in Sources */,
 				C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */,
-				C5C1CE5B1A70DADF00B6E411 /* FavViewController.swift in Sources */,
 				27C0BC441DE52D8000A2CBCF /* StateLegController.swift in Sources */,
 				27C0BC5C1DE6024900A2CBCF /* HouseComController.swift in Sources */,
 				27C0BC4E1DE5850600A2CBCF /* BillDetailCell.swift in Sources */,
@@ -701,7 +710,6 @@
 				27C0BC4D1DE5850600A2CBCF /* BillController.swift in Sources */,
 				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				27C0BC3A1DE52D4000A2CBCF /* HouseLegController.swift in Sources */,
-				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
 				C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */,
 				27C0BC3D1DE52D5000A2CBCF /* LegCell.swift in Sources */,
 				27C0BC3E1DE52D5000A2CBCF /* LegDetailCell.swift in Sources */,

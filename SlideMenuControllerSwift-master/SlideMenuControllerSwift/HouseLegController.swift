@@ -34,6 +34,39 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationItem.title = "Legislators"
         self.tabBarController?.navigationItem.rightBarButtonItem = filterButton
     }
+    var legSection = [String]()
+    //array to hold the first letter of the last names as the key and the array of legislator objects as the value
+    var legDict = [String:[[String:AnyObject]]]()
+    func generateLegsDict() {
+        for leg in self.arrRes  {
+            let lname = leg["last_name"] as? String
+            let key = "\(lname![(lname!.startIndex)])"
+            
+            if var legValues = legDict[key] {
+                legValues.append(leg as [String:AnyObject])
+                legDict[key] = legValues
+            } else {
+                legDict[key] = [leg as [String:AnyObject]]
+            }
+        }
+        legSection = [String](legDict.keys).sorted()
+    }
+    var flegSection = [String]()
+    var flegDict = [String:[[String:AnyObject]]]()
+    func generateFilterLegsDict() {
+        for leg in self.filteredLegs  {
+            let lname = leg["last_name"] as? String
+            let key = "\(lname![(lname!.startIndex)])"
+            
+            if var legValues = flegDict[key] {
+                legValues.append(leg as [String:AnyObject])
+                flegDict[key] = legValues
+            } else {
+                flegDict[key] = [leg as [String:AnyObject]]
+            }
+        }
+        flegSection = [String](flegDict.keys).sorted()
+    }
 
     @IBAction func filterLegs(_ sender: Any) {
     
@@ -62,11 +95,13 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 if self.arrRes.count > 0 {
                     self.numOfRows = self.arrRes.count
+                    self.generateLegsDict()
                     self.tblJSON.reloadData()
                     SwiftSpinner.hide()
                 }
             }
         }
+        let appearance = UITabBarItem.appearance()
         self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -81,9 +116,17 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
-            return filteredLegs.count
+            let legKey = flegSection[section]
+            if let legValues = flegDict[legKey] {
+                return legValues.count
+            }
+            return 0
         } else {
-            return self.numOfRows
+            let legKey = legSection[section]
+            if let legValues = legDict[legKey] {
+                return legValues.count
+            }
+            return 0
         }
     }
     
@@ -94,44 +137,90 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? LegCell
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
-            cur = self.filteredLegs[indexPath.row]
+            let legKey = flegSection[indexPath.section]
+            if flegDict[legKey] != nil {
+                let curSec = flegDict[legKey]
+                cur = (curSec?[indexPath.row])!
+                let first = cur["first_name"] as? String
+                let last = cur["last_name"] as? String
+                cell?.legname?.text = last! + ", " + first!
+                cell?.legstate?.text = cur["state_name"] as? String
+                
+                let id = cur["bioguide_id"] as? String
+                let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+                let i = URL(string: imageurl)
+                let data = try? Data(contentsOf: i!)
+                cell?.legimage.image = UIImage(data: data!)
+                
+            }
         } else {
-            cur = self.arrRes[indexPath.row]
+            let legKey = legSection[indexPath.section]
+            if legDict[legKey] != nil {
+                let curSec = legDict[legKey]
+                cur = (curSec?[indexPath.row])!
+                let first = cur["first_name"] as? String
+                let last = cur["last_name"] as? String
+                cell?.legname?.text = last! + ", " + first!
+                cell?.legstate?.text = cur["state_name"] as? String
+                
+                let id = cur["bioguide_id"] as? String
+                let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
+                let i = URL(string: imageurl)
+                let data = try? Data(contentsOf: i!)
+                cell?.legimage.image = UIImage(data: data!)
+                
+            }
         }
-        
-        let first = cur["first_name"] as? String
-        let last = cur["last_name"] as? String
-        cell?.legname?.text = last! + ", " + first!
-        cell?.legstate?.text = cur["state_name"] as? String
-        
-        let id = cur["bioguide_id"] as? String
-        let imageurl = "https://theunitedstates.io/images/congress/original/" + id! + ".jpg"
-        let i = URL(string: imageurl)
-        let data = try? Data(contentsOf: i!)
-        cell?.legimage.image = UIImage(data: data!)
-        
         return cell!
     }
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        if(shouldShowSearch) {
+            return flegSection.count
+        } else {
+            return legSection.count
+        }
+    }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if(shouldShowSearch) {
+            return flegSection[section]
+        } else {
+            return legSection[section]
+        }
+    }
+    
+    // Index
+    
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if(shouldShowSearch) {
+            return flegSection
+        } else {
+            return legSection
+        }
+    }// return list of section titles to display in section index view (e.g. "ABCD...Z#")
+    
+    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return legSection.index(of: title)!
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "legislatorDetail" {
             let legDetailVC = segue.destination as! LegislatorDetailViewController
             if let cell = self.tblJSON.indexPathForSelectedRow {
                 legDetailVC.leg = legAt(indexPath: cell as NSIndexPath)
-
-                //legDetailVC.returnId
             }
             self.tabBarController?.tabBar.isHidden = true
         }
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
-        //let leg = self.arrRes[indexPath.section]
-        return self.arrRes[indexPath.row]
+        let legKey = legSection[indexPath.section]
+        let legs = self.legDict[legKey]
+        return (legs?[indexPath.row])!
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearch = true
         searchBar.endEditing(true)
+        generateFilterLegsDict()
         self.tblJSON.reloadData()
     }
     
@@ -146,10 +235,12 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 let l = obj["last_name"] as? String
                 return f!.range(of: searchText) != nil || l!.range(of: searchText) != nil
             })
-            
+            generateFilterLegsDict()
         } else {
             shouldShowSearch = false
+            
         }
+        generateLegsDict()
         self.tblJSON.reloadData()
     }
     public func updateSearchResults(for searchController: UISearchController) {
@@ -161,6 +252,7 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
             let l = obj["last_name"] as? String
             return f!.range(of: searchString!) != nil || l!.range(of: searchString!) != nil
         })
+        generateFilterLegsDict()
         self.tblJSON.reloadData()
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

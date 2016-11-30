@@ -71,6 +71,14 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
             searchButton.image = UIImage(named: "Search-22.png")
         }
     }
+    public func formatDate(dateString : String) -> String {
+        let df = DateFormatter()
+        df.dateStyle = DateFormatter.Style.medium
+        df.dateFormat = "yyyy-MM-dd"
+        let intro = df.date(from: dateString)!
+        df.dateFormat = "dd MMM yyyy"
+        return df.string(from: intro)
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(shouldShowSearch) {
             return self.filteredBills.count
@@ -79,24 +87,28 @@ class NewBillController: UIViewController, UISearchBarDelegate, UITableViewDataS
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "billCell", for: indexPath)
+
+        let cell = Bundle.main.loadNibNamed("BillListCell", owner: self, options: nil)?.first as! BillListCell
         var cur : [String:AnyObject]
         if(shouldShowSearch) {
             cur = self.filteredBills[indexPath.row]
         } else {
             cur = self.arrRes[indexPath.row]
         }
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.text = cur["official_title"] as? String
-        
+        cell.id?.text = cur["bill_id"] as? String
+        cell.title?.text = cur["official_title"]?.stringValue
+        cell.date.text = formatDate(dateString: (cur["introduced_on"] as? String)!)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "billDetail", sender: self)
+        performSegue(withIdentifier: "billDetail", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "billDetail" {

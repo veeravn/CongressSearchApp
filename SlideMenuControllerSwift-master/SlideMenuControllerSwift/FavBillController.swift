@@ -51,14 +51,22 @@ class FavBillController: UIViewController, UITableViewDelegate, UITableViewDataS
         return favBillDetails.count
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tblJSON.dequeueReusableCell(withIdentifier: "billCell", for: indexPath)
+        let cell = Bundle.main.loadNibNamed("BillListCell", owner: self, options: nil)?.first as! BillListCell
         let cur = self.favBillDetails[indexPath.row]
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.text = cur["official_title"] as? String
-        
+        cell.id?.text = cur["bill_id"] as? String
+        cell.title?.text = cur["official_title"] as? String
+        cell.date.text = cur["introduced_on"] as? String
         return cell
     }
-    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "billDetail", sender: self)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "billDetail" {
             let billDetailVC = segue.destination as! BillDetailController
