@@ -101,7 +101,6 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
-        let appearance = UITabBarItem.appearance()
         self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
     }
     override func viewDidAppear(_ animated: Bool) {
