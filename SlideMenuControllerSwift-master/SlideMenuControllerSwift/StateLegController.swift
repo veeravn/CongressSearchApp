@@ -110,6 +110,18 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 flegDict[key] = [leg as [String:AnyObject]]
             }
         }
+        for key in flegDict.keys {
+            var legValues = flegDict[key]
+            legValues = legValues?.sorted {
+                switch ($0["state_name"] as? String,$1["state_name"] as? String) {
+                case let (lhs,rhs) where lhs == rhs:
+                    return ($0["last_name"] as? String)! < ($1["last_name"] as? String)!
+                case let (lhs, rhs):
+                    return lhs! < rhs!
+                }
+            }
+            flegDict[key] = legValues
+        }
         flegSection = [String](flegDict.keys).sorted()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

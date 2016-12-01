@@ -18,6 +18,7 @@ class FavLegController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tblJSON.contentInset = UIEdgeInsetsMake(-45, 0, 0, 0);
+        
         // Do any additional setup after loading the view.
     }
     func getFavs() {
@@ -42,6 +43,8 @@ class FavLegController: UIViewController, UITableViewDelegate, UITableViewDataSo
         SwiftSpinner.show("Loading Favorite Data")
         getFavs()
         SwiftSpinner.hide()
+        self.tabBarController?.navigationItem.titleView = nil
+        self.tabBarController?.navigationItem.title = "Favorites"
     }
     var legSection = [String]()
     //array to hold the first letter of the last names as the key and the array of legislator objects as the value
