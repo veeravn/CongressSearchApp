@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A21C50776A9862FC873B8FF /* Pods_SlideMenuControllerSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAD4731D6DEE19F2A1D5AB4 /* Pods_SlideMenuControllerSwiftTests.framework */; };
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,7 +42,6 @@
 		C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C539E64D1A315E87003B7CC7 /* Main.storyboard */; };
 		C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C539E6501A315E87003B7CC7 /* Images.xcassets */; };
 		C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C539E6521A315E87003B7CC7 /* LaunchScreen.xib */; };
-		C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */; };
 		C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */; };
@@ -63,16 +61,6 @@
 		C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F179CF1BEB2CB500EEDD9A /* UIView.swift */; };
 		C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F179D11BEB2FAF00EEDD9A /* UIColor.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C539E6391A315E87003B7CC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C539E6401A315E87003B7CC7;
-			remoteInfo = SlideMenuControllerSwift;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,14 +97,13 @@
 		7A4FFD005F909CEB77763C9A /* Pods_SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DF21246ADC2F8572851E93 /* Pods-SlideMenuControllerSwift-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideMenuControllerSwift-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideMenuControllerSwift-iOS/Pods-SlideMenuControllerSwift-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		9A06E8040E1098053CD53181 /* Pods-SlideMenuControllerSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideMenuControllerSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideMenuControllerSwift/Pods-SlideMenuControllerSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMenuControllerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C539E6411A315E87003B7CC7 /* CongressSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CongressSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E6451A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E6461A315E87003B7CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C539E6491A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlideMenuControllerSwift.xcdatamodel; sourceTree = "<group>"; };
 		C539E64E1A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C539E6501A315E87003B7CC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C539E6531A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideMenuControllerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E65E1A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -156,14 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F2554B2A5B76EDAA90DA066 /* Pods_SlideMenuControllerSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C539E6561A315E87003B7CC7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A21C50776A9862FC873B8FF /* Pods_SlideMenuControllerSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +242,7 @@
 		C539E6421A315E87003B7CC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */,
-				C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */,
+				C539E6411A315E87003B7CC7 /* CongressSearchApp.app */,
 				0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */,
 			);
 			name = Products;
@@ -419,9 +397,9 @@
 			productReference = 0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */ = {
+		C539E6401A315E87003B7CC7 /* CongressSearchApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C539E6631A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift" */;
+			buildConfigurationList = C539E6631A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "CongressSearchApp" */;
 			buildPhases = (
 				49034AFEE76A1AEFFD86D7CA /* [CP] Check Pods Manifest.lock */,
 				C539E63D1A315E87003B7CC7 /* Sources */,
@@ -434,31 +412,10 @@
 			);
 			dependencies = (
 			);
-			name = SlideMenuControllerSwift;
+			name = CongressSearchApp;
 			productName = SlideMenuControllerSwift;
-			productReference = C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */;
+			productReference = C539E6411A315E87003B7CC7 /* CongressSearchApp.app */;
 			productType = "com.apple.product-type.application";
-		};
-		C539E6581A315E87003B7CC7 /* SlideMenuControllerSwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C539E6661A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */;
-			buildPhases = (
-				8EFC12D59FF99529DCFA515B /* [CP] Check Pods Manifest.lock */,
-				C539E6551A315E87003B7CC7 /* Sources */,
-				C539E6561A315E87003B7CC7 /* Frameworks */,
-				C539E6571A315E87003B7CC7 /* Resources */,
-				E3DB7975AC96B33DCB692A45 /* [CP] Embed Pods Frameworks */,
-				6D7C0D14BEDBC85CC52D9760 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C539E65B1A315E87003B7CC7 /* PBXTargetDependency */,
-			);
-			name = SlideMenuControllerSwiftTests;
-			productName = SlideMenuControllerSwiftTests;
-			productReference = C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -479,14 +436,9 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
-					C539E6581A315E87003B7CC7 = {
-						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0800;
-						TestTargetID = C539E6401A315E87003B7CC7;
-					};
 				};
 			};
-			buildConfigurationList = C539E63C1A315E87003B7CC7 /* Build configuration list for PBXProject "SlideMenuControllerSwift" */;
+			buildConfigurationList = C539E63C1A315E87003B7CC7 /* Build configuration list for PBXProject "CongressSearchApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -499,8 +451,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */,
-				C539E6581A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
+				C539E6401A315E87003B7CC7 /* CongressSearchApp */,
 				0E75C5951BE3CA7900844634 /* SlideMenuControllerSwift-iOS */,
 			);
 		};
@@ -526,13 +477,6 @@
 				C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */,
 				C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */,
 				C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C539E6571A315E87003B7CC7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,21 +513,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6D7C0D14BEDBC85CC52D9760 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideMenuControllerSwiftTests/Pods-SlideMenuControllerSwiftTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		71412AE87DAA8439074E3FC3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -597,21 +526,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideMenuControllerSwift/Pods-SlideMenuControllerSwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8EFC12D59FF99529DCFA515B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA6D8967A0E164E37F593761 /* [CP] Check Pods Manifest.lock */ = {
@@ -642,21 +556,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideMenuControllerSwift-iOS/Pods-SlideMenuControllerSwift-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E3DB7975AC96B33DCB692A45 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideMenuControllerSwiftTests/Pods-SlideMenuControllerSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -718,23 +617,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C539E6551A315E87003B7CC7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C539E65B1A315E87003B7CC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */;
-			targetProxy = C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C539E64D1A315E87003B7CC7 /* Main.storyboard */ = {
@@ -933,38 +816,6 @@
 			};
 			name = Release;
 		};
-		C539E6671A315E87003B7CC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCC9017A773F913E07216EB2 /* Pods-SlideMenuControllerSwiftTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
-			};
-			name = Debug;
-		};
-		C539E6681A315E87003B7CC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8F1898A3DD13C597C6DC6FE /* Pods-SlideMenuControllerSwiftTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -977,7 +828,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C539E63C1A315E87003B7CC7 /* Build configuration list for PBXProject "SlideMenuControllerSwift" */ = {
+		C539E63C1A315E87003B7CC7 /* Build configuration list for PBXProject "CongressSearchApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C539E6611A315E87003B7CC7 /* Debug */,
@@ -986,20 +837,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C539E6631A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift" */ = {
+		C539E6631A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "CongressSearchApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C539E6641A315E87003B7CC7 /* Debug */,
 				C539E6651A315E87003B7CC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C539E6661A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C539E6671A315E87003B7CC7 /* Debug */,
-				C539E6681A315E87003B7CC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

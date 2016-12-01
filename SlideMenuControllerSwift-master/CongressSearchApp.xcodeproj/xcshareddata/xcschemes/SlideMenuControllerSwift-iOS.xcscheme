@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0E75C5951BE3CA7900844634"
-               BuildableName = "SlideMenuControllerSwift.framework"
+               BuildableName = "CongressSearchApp.framework"
                BlueprintName = "SlideMenuControllerSwift-iOS"
-               ReferencedContainer = "container:SlideMenuControllerSwift.xcodeproj">
+               ReferencedContainer = "container:CongressSearchApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E75C5951BE3CA7900844634"
-            BuildableName = "SlideMenuControllerSwift.framework"
+            BuildableName = "CongressSearchApp.framework"
             BlueprintName = "SlideMenuControllerSwift-iOS"
-            ReferencedContainer = "container:SlideMenuControllerSwift.xcodeproj">
+            ReferencedContainer = "container:CongressSearchApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E75C5951BE3CA7900844634"
-            BuildableName = "SlideMenuControllerSwift.framework"
+            BuildableName = "CongressSearchApp.framework"
             BlueprintName = "SlideMenuControllerSwift-iOS"
-            ReferencedContainer = "container:SlideMenuControllerSwift.xcodeproj">
+            ReferencedContainer = "container:CongressSearchApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

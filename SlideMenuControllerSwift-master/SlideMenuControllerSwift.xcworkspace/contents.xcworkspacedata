@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SlideMenuControllerSwift.xcodeproj">
+      location = "group:/Users/veerav/Desktop/workspace/CongressSearchApp/SlideMenuControllerSwift-master/CongressSearchApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
