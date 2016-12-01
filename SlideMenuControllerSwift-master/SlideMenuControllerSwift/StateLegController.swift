@@ -82,6 +82,18 @@ class StateLegController: UIViewController, UITableViewDataSource, UITableViewDe
                 legDict[key] = [leg as [String:AnyObject]]
             }
         }
+        for key in legDict.keys {
+            var legValues = legDict[key]
+            legValues = legValues?.sorted {
+                switch ($0["state_name"] as? String,$1["state_name"] as? String) {
+                case let (lhs,rhs) where lhs == rhs:
+                    return ($0["last_name"] as? String)! < ($1["last_name"] as? String)!
+                case let (lhs, rhs):
+                    return lhs! < rhs!
+                }
+            }
+            legDict[key] = legValues
+        }
         legSection = [String](legDict.keys).sorted()
     }
     var flegSection = [String]()
