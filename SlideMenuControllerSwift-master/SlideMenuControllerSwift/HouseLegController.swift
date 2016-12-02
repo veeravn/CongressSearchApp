@@ -211,9 +211,15 @@ class HouseLegController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     func legAt(indexPath: NSIndexPath) -> [String:AnyObject] {
-        let legKey = legSection[indexPath.section]
-        let legs = self.legDict[legKey]
-        return (legs?[indexPath.row])!
+        if !shouldShowSearch {
+            let legKey = legSection[indexPath.section]
+            let legs = self.legDict[legKey]
+            return (legs?[indexPath.row])!
+        } else {
+            let legKey = flegSection[indexPath.section]
+            let legs = self.flegDict[legKey]
+            return (legs?[indexPath.row])!
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
